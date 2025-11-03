@@ -28,7 +28,7 @@ def list_to_string(input_list: list):
     
     return output_str
 
-def append_all(list_to_append: list, *args):
+def append_all_to_list(list_to_append: list, *args):
     for item in args:
         if type(item) == list:
             for element in item:
@@ -51,12 +51,12 @@ def expanded_perfect_square(common_factor_coeff: int, x_coeff: int, y_coeff: int
     y2_term = f"{with_sign(y2_coeff)}y^2"
 
     expanded_polynomial = []
-    append_all(expanded_polynomial, x2_term, middle_term, y2_term)
+    append_all_to_list(expanded_polynomial, x2_term, middle_term, y2_term)
 
     return(expanded_polynomial)
 
 def expanded_three_square_terms(num_unk: str = ""):
-    perfect_square_common_factor_coeff = -1
+    perfect_square_common_factor_coeff = random_coeff(-1, 1)
 
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, 6,-2)
     number_square = random_coeff()**2
@@ -69,9 +69,9 @@ def expanded_three_square_terms(num_unk: str = ""):
     expanded_polynomial = []
 
     if perfect_square_common_factor_coeff < 0:
-        append_all(expanded_polynomial, number_square_str, perfect_square)
+        append_all_to_list(expanded_polynomial, number_square_str, perfect_square)
     else:
-        expanded_polynomial.append(perfect_square, f"-{number_square_str}")
+        append_all_to_list(expanded_polynomial, perfect_square, f"-{number_square_str}")
 
     return(expanded_polynomial)
 
