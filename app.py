@@ -23,6 +23,11 @@ def main_route():
     amount = int(request.form.get("amount")) if request.form.get("amount") else 1
     shuffle = request.form.get("shuffle")
 
+    if amount > 9999: # why do you need this many
+        amount = 10000
+    
+    print(amount)
+
     x_unk = request.form.get("x_unk") if request.form.get("x_unk") else "x"
     y_unk = request.form.get("y_unk") if request.form.get("y_unk") else "y"
     square_unk = request.form.get("square_unk")
