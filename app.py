@@ -6,7 +6,7 @@ import time
 from generator import *
 
 app = Flask('')
-port = 8080
+port = 8085
 app.json.compact = False
 
 def request_url_to_list(url):
@@ -17,7 +17,8 @@ def request_url_to_list(url):
 def main_route():
     message = ""
     error = ""
-    output_file_name = ""
+
+    
 
     if request.method == 'POST':
 
