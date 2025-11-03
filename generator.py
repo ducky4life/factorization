@@ -16,6 +16,12 @@ def with_sign(coeff: int):
 
     return(f"{sign}{coeff}")
 
+def append_unk_to_coeff(unk: str, coeff: int, power: int = 1):
+    if power == 2:
+        return(f"{with_sign(coeff)}{unk}²")
+    else:
+        return(f"{with_sign(coeff)}{unk}")
+
 def shuffle_list(input_list: list):
     random.shuffle(input_list)
     return input_list
@@ -40,35 +46,58 @@ def append_all_to_list(list_to_append: list, *args):
             list_to_append.append(item)
 
 
-def expanded_perfect_square(common_factor_coeff: int, x_coeff: int, y_coeff: int, x_unk: str = "x", y_unk: str = "y"):
-    common_factor_coeff = random_coeff(-2, 2)
-    x_coeff = random_coeff(-6, 6)
-    y_coeff = random_coeff(-6, 6)
+def expanded_perfect_square(common_factor_coeff: int = random_coeff(-2, 2), x_coeff: int = random_coeff(-6, 6), y_coeff: int = random_coeff(-6, 6), x_unk: str = "x", y_unk: str = "y"):
 
     x2_coeff = (x_coeff**2)*common_factor_coeff
     y2_coeff = (y_coeff**2)*common_factor_coeff
 
     middle_coeff = 2*x_coeff*y_coeff*common_factor_coeff
-
-    x2_term = f"{with_sign(x2_coeff)}{x_unk}²"
     middle_term = f"{with_sign(middle_coeff)}{x_unk}{y_unk}"
-    y2_term = f"{with_sign(y2_coeff)}{y_unk}²"
+
+    x2_term = append_unk_to_coeff(x_unk, x2_coeff, 2)
+    y2_term = append_unk_to_coeff(y_unk, y2_coeff, 2)
 
     expanded_polynomial = []
     append_all_to_list(expanded_polynomial, x2_term, middle_term, y2_term)
 
     return(expanded_polynomial)
 
+def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", *args):
+    x_coeff = random_coeff_pos(7) # positive so i can control diff sign
+    y_coeff = random_coeff_pos(7)
+
+    degree_one_common_factor_coeff = random_coeff(-3, 3)
+
+    x2_coeff = x_coeff**2
+    y2_coeff = -y_coeff**2
+
+    x2_term = append_unk_to_coeff(x_unk, x2_coeff, 2)
+    y2_term = append_unk_to_coeff(y_unk, y2_coeff, 2)
+
+    x_term_coeff = x_coeff*degree_one_common_factor_coeff
+    y_term_coeff = y_coeff*degree_one_common_factor_coeff
+
+    x_term = append_unk_to_coeff(x_unk, x_term_coeff)
+    y_term = append_unk_to_coeff(y_unk, y_term_coeff)
+
+    expanded_polynomial = []
+
+    append_all_to_list(expanded_polynomial, x2_term, x_term, y_term, y2_term)
+
+    return(expanded_polynomial)
+
+
+
 def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str = ""):
     perfect_square_common_factor_coeff = random_coeff(-1, 1)
 
-    perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, 6, -2, x_unk, y_unk)
+    perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_unk=x_unk, y_unk=y_unk)
     number_square = random_coeff()**2
 
     number_square_str = str(number_square)
 
     if num_unk != "":
-        number_square_str = str(number_square) + num_unk + "²"
+        number_square_str = append_unk_to_coeff(num_unk, number_square_str, 2)
 
     expanded_polynomial = []
 
@@ -82,6 +111,9 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 def process_input(type: str, shuffle: str, *args):
     result = []
     match type:
+        case "2_sq_diff":
+            result = expanded_two_square_terms_diff(*args)
+
         case "3_sq":
             result = expanded_three_square_terms(*args)
 
