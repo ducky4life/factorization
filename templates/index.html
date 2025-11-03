@@ -58,13 +58,22 @@
           </label>
         </div>
 
+        <div class="toggles" style="padding-left: 50px;">
+          <p style="padding-right: 50px;">export as file</p>
+          <label class="switch">
+            <input type="checkbox" name="output_as_file">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
       </div><br>
     
         <p>type of polynomial</p><br>
       <select name="polynomial_type" class="button button3">
-        <option value="2_sq_diff">2 squares (diff sign)</option>
+        <option value="2_sq_diff">2 squares (diff)</option>
         <option value="3_sq">3 squares</option>
         <option value="perf_sq">perfect square</option>
+        <option value="mixed">random</option>
       </select>
         
         <input class="button button3" type="submit" />
