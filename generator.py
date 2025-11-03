@@ -37,28 +37,28 @@ def append_all_to_list(list_to_append: list, *args):
             list_to_append.append(item)
 
 
-def expanded_perfect_square(common_factor_coeff: int, x_coeff: int, y_coeff: int):
-    x_coeff = 6
-    y_coeff = -1
+def expanded_perfect_square(common_factor_coeff: int, x_coeff: int, y_coeff: int, x_unk: str = "x", y_unk: str = "y"):
+    x_coeff = 1
+    y_coeff = -3
 
     x2_coeff = (x_coeff**2)*common_factor_coeff
     y2_coeff = (y_coeff**2)*common_factor_coeff
 
     middle_coeff = 2*x_coeff*y_coeff*common_factor_coeff
 
-    x2_term = f"{with_sign(x2_coeff)}x^2"
-    middle_term = f"{with_sign(middle_coeff)}xy"
-    y2_term = f"{with_sign(y2_coeff)}y^2"
+    x2_term = f"{with_sign(x2_coeff)}{x_unk}^2"
+    middle_term = f"{with_sign(middle_coeff)}{x_unk}{y_unk}"
+    y2_term = f"{with_sign(y2_coeff)}{y_unk}^2"
 
     expanded_polynomial = []
     append_all_to_list(expanded_polynomial, x2_term, middle_term, y2_term)
 
     return(expanded_polynomial)
 
-def expanded_three_square_terms(num_unk: str = ""):
+def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str = ""):
     perfect_square_common_factor_coeff = random_coeff(-1, 1)
 
-    perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, 6,-2)
+    perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, 6,-2, x_unk, y_unk)
     number_square = random_coeff()**2
 
     number_square_str = str(number_square)
@@ -75,4 +75,4 @@ def expanded_three_square_terms(num_unk: str = ""):
 
     return(expanded_polynomial)
 
-print(list_to_string(expanded_three_square_terms("")))
+print(list_to_string(expanded_three_square_terms("(6a-1)")))
