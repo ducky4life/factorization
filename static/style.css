@@ -59,25 +59,19 @@ h2 {
   text-decoration-color: var(--tertiary-color);
 }
 
-p, ::placeholder {
+p {
   font-size: min(1.5vw, 20px);
   padding-top: 20px;
 }
 
 @media all and (orientation: portrait) {
-  p, ::placeholder {
+  p {
     font-size: 3vw;
   }
 }
 
 ::placeholder {
   padding-left: 10px;
-}
-
-@media all and (orientation: portrait) {
-  ::placeholder {
-    font-size: 3vw;
-  }
 }
 
 .textbox {
