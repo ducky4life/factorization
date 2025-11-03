@@ -15,19 +15,27 @@ def request_url_to_list(url):
 
 @app.route('/', methods=['GET', 'POST'])
 def main_route():
-    message = ""
+    message = []
     error = ""
+    shuffle = ""
 
-    
+    polynomial_type = request.form.get("polynomial_type")
+    amount = int(request.form.get("amount")) if request.form.get("amount") else 1
+    shuffle = request.form.get("shuffle")
+
+    x_unk = request.form.get("x_unk") if request.form.get("x_unk") else "x"
+    y_unk = request.form.get("y_unk") if request.form.get("y_unk") else "y"
+    square_unk = request.form.get("square_unk")
 
     if request.method == 'POST':
 
         try:
-            message = list_to_string(expanded_three_square_terms("x", "y", ""))
+            for i in range(amount):
+                message.append(list_to_string(process_input(polynomial_type, shuffle, x_unk, y_unk, square_unk), True))
         except Exception as e:
             error = f"Error: {e}"
             
-    return render_template("index.html", message=message, error=error, filepath=output_file_name)
+    return render_template("index.html", message=message, error=error)
 
 def run():
     serve(app, host="0.0.0.0", port=port)
