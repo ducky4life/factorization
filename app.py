@@ -6,7 +6,7 @@ import time
 from generator import *
 
 app = Flask('')
-port = 8085
+port = 8080
 app.json.compact = False
 
 def request_url_to_list(url):
