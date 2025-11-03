@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <body>
+  <head>
+    <title>Ducky</title>
+    
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  </head>
+  
+  <div class="navBar">
+    <nav>
+      <a href="https://ducky.is-a.dev/" class="navText">Ducky</a>
+    </nav>
+  </div>
+  
+    <section class="wrapper"><br>
+    <h2>factorization generator</h2>
+      <br>
+      <a class="codebadges" href="https://github.com/ducky4life/factorization"><img src="https://img.shields.io/badge/Source Code-181717?logo=github&logoColor=fff&style=for-the-badge" alt="GitHub Badge"></a>
+      <br>
+      
+      <form method="post" enctype="multipart/form-data">
+        
+          <input class="button button3" type="submit" />
+      </form>
+      <br>
+
+      <p>{{  message  }}</p>
+
+      {% if error %}
+            <p>{{  error  }}</p>
+      {% endif %}
+
+    </body>
+  </section>
+</html>
