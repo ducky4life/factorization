@@ -46,7 +46,7 @@ def append_all_to_list(list_to_append: list, *args):
             list_to_append.append(item)
 
 
-def expanded_perfect_square(common_factor_coeff: int = random_coeff(-2, 2), x_coeff: int = random_coeff(-6, 6), y_coeff: int = random_coeff(-6, 6), x_unk: str = "x", y_unk: str = "y"):
+def expanded_perfect_square(common_factor_coeff: int = random_coeff(-2, 2), x_coeff: int = random_coeff(-6, 6), y_coeff: int = random_coeff(-6, 6), x_unk: str = "x", y_unk: str = "y", **args):
 
     x2_coeff = (x_coeff**2)*common_factor_coeff
     y2_coeff = (y_coeff**2)*common_factor_coeff
@@ -62,7 +62,7 @@ def expanded_perfect_square(common_factor_coeff: int = random_coeff(-2, 2), x_co
 
     return(expanded_polynomial)
 
-def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", *args):
+def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
     x_coeff = random_coeff_pos(7) # positive so i can control diff sign
     y_coeff = random_coeff_pos(7)
 
@@ -108,17 +108,21 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     return(expanded_polynomial)
 
-def process_input(type: str, shuffle: str, *args):
+def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
-    match type:
+
+    if polynomial_type == "mixed":
+        polynomial_type = random.choice(["2_sq_diff", "3_sq", "perf_sq"])
+
+    match polynomial_type:
         case "2_sq_diff":
-            result = expanded_two_square_terms_diff(*args)
+            result = expanded_two_square_terms_diff(**args)
 
         case "3_sq":
-            result = expanded_three_square_terms(*args)
+            result = expanded_three_square_terms(**args)
 
         case "perf_sq":
-            result = expanded_perfect_square(*args)
+            result = expanded_perfect_square(**args)
 
     if shuffle == "on":
         shuffle_list(result)
