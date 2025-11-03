@@ -87,6 +87,8 @@ def expanded_two_square_terms_same(x_unk: str = "x", y_unk: str = "y", **args):
     
 
 def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
+    answer = ""
+
     x_coeff = random_coeff_pos(7) # positive so i can control diff sign
     y_coeff = random_coeff_pos(7)
 
@@ -98,8 +100,8 @@ def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
     x2_term = append_unk_to_coeff(x_unk, x2_coeff, 2)
     y2_term = append_unk_to_coeff(y_unk, y2_coeff, 2)
 
-    x_term_coeff = x_coeff*degree_one_common_factor_coeff
-    y_term_coeff = y_coeff*degree_one_common_factor_coeff
+    x_term_coeff = x_coeff*degree_one_common_factor_coeff*random_coeff(-1, 1)
+    y_term_coeff = y_coeff*degree_one_common_factor_coeff*random_coeff(-1, 1)
 
     x_term = append_unk_to_coeff(x_unk, x_term_coeff)
     y_term = append_unk_to_coeff(y_unk, y_term_coeff)
@@ -108,15 +110,20 @@ def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
 
     append_all_to_list(expanded_polynomial, x2_term, x_term, y_term, y2_term)
 
+    answer = f"({append_unk_to_coeff(x_unk, x_coeff)}+{append_unk_to_coeff(y_unk, y_coeff)})({append_unk_to_coeff(x_unk, x_coeff)}-{append_unk_to_coeff(y_unk, y_coeff)}{with_sign(degree_one_common_factor_coeff)})" # for both x y term coeff pos
+
     return(expanded_polynomial)
 
 
 
 def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str = ""):
+    answer = ""
     perfect_square_common_factor_coeff = random_coeff(-1, 1)
 
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_unk=x_unk, y_unk=y_unk)
-    number_square = random_coeff()**2
+
+    number = random_coeff()
+    number_square = number**2
 
     number_square_str = str(number_square)
 
@@ -127,6 +134,8 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     if perfect_square_common_factor_coeff < 0:
         append_all_to_list(expanded_polynomial, f"+{number_square_str}", perfect_square)
+
+        answer = f"({number}+)"
     else:
         append_all_to_list(expanded_polynomial, perfect_square, f"-{number_square_str}")
 

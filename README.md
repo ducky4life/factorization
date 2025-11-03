@@ -90,3 +90,7 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 
 
 ## to do list
+
+- [ ] toggle including answers
+- [ ] 0/1 square terms
+- [ ] swapping signs
