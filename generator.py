@@ -77,7 +77,7 @@ def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None
 
 def expanded_no_square_terms(**args):
     unk_list = ["a", "b", "c", "d", ""]
-    unk_list.pop(random_coeff(0, 4))
+    unk_list.pop(random.randint(0, 4))
     random.shuffle(unk_list)
 
     a = unk_list[0]
