@@ -158,6 +158,9 @@ def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
     x_coeff = random_coeff_pos(7) # positive so i can control diff sign
     y_coeff = random_coeff_pos(7)
 
+    if x_coeff == y_coeff or x_coeff == -y_coeff:
+        x_coeff = parity_shift(x_coeff)
+
     degree_one_common_factor_coeff = random_coeff(-3, 3)
 
     x2_coeff = x_coeff**2
