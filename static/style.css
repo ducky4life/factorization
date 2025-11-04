@@ -92,17 +92,25 @@ p {
 }
 
 @media all and (orientation: portrait) {
-  .textbox {
-    width: 90vw;
-    height: 3vh;
+  textarea {
+    width: 40vw;
+    height: 6vh;
   }
 
   
   .textboxes {
-    justify-content: flex-start;
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: center;
     align-items: center;
+    height: 30vh;
   }
 
+  ::placeholder {
+    font-size: 3vw;
+    padding-left: 2vw;
+    padding-top: 1vw;
+  }
 }
 
 nav {
