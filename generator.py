@@ -14,8 +14,10 @@ def with_sign(coeff: int):
     if coeff < 0:
         sign = ""
 
-    if coeff == -1 or coeff == 1: # don't write out 1 as coeff
-        return(f"{sign}")
+    if coeff == 1: # don't write out 1 as coeff
+        return(sign)
+    elif coeff == -1:
+        return("-")
 
     return(f"{sign}{coeff}")
 
