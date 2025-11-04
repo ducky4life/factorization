@@ -90,7 +90,7 @@ def expanded_no_square_terms(**args):
     ab_coeff = a_coeff*b_coeff
     ac_coeff = a_coeff*c_coeff
     db_coeff = d_coeff*b_coeff
-    dc_coeff = d_coeff*b_coeff
+    dc_coeff = d_coeff*c_coeff
 
     ab_term = append_unk_to_coeff(random.choice([a+b, b+a]), ab_coeff)
     ac_term = append_unk_to_coeff(random.choice([a+c, c+a]), ac_coeff)
