@@ -48,7 +48,7 @@ def main_route():
             response.headers["Content-Disposition"] = f"attachment; filename={output_file_name}"
             return response
             
-    return render_template("index.html", message=message, error=error)
+    return render_template("index.html", message=message, error=error, form=request.form)
 
 def run():
     serve(app, host="0.0.0.0", port=port)
