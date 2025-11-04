@@ -93,7 +93,7 @@ def expanded_no_square_terms(**args):
     d_coeff = random_coeff(-3, 3)
 
     if a_coeff % 2 == d_coeff % 2: # avoid the entire polynomial having same common factor: make sure a and d have different parity
-        a_coeff = a_coeff + 1
+        a_coeff = a_coeff + 1 if a_coeff != -1 else -2
 
     ab_coeff = a_coeff*b_coeff
     ac_coeff = a_coeff*c_coeff
