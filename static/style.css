@@ -46,12 +46,18 @@ a:active {
 }
 
 body {
-  background: url("./images/background.jpg") no-repeat fixed;
-  background-position-x: center;
-  background-position-y: top;
-  background-size: cover;
-  background-attachment: fixed;
   color: white;
+}
+
+.bg-fixed {
+  position: fixed;
+  inset: 0;                 /* shorthand for top:0; right:0; bottom:0; left:0; */
+  z-index: -1;              /* put behind content */
+  background-image: url("./images/background.jpg");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  pointer-events: none;     /* so clicks go through to the page */
 }
 
 h2 {
