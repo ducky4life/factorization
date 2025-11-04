@@ -81,6 +81,11 @@ p {
   padding-left: 10px;
 }
 
+.textboxes {
+  display: flex;
+  justify-content: center;
+}
+
 .textbox {
   width: 50vw;
   height: 5vh;
@@ -91,6 +96,13 @@ p {
     width: 90vw;
     height: 3vh;
   }
+
+  
+  .textboxes {
+    justify-content: flex-start;
+    align-items: center;
+  }
+
 }
 
 nav {
@@ -109,6 +121,7 @@ nav {
   height: 20vh;
   margin-bottom: 10px;
 }
+
 
 .codebadges img {
   width: max-content;
