@@ -9,6 +9,10 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
         number = random_coeff_pos(max_incl) # avoid recursive
     return number
 
+def parity_shift(unk):
+    unk = unk + 1 if unk != -1 else -2
+    return unk
+
 def with_sign(coeff: int):
     sign = "+"
     if coeff < 0:
@@ -95,11 +99,11 @@ def expanded_no_square_terms(**args):
     # avoid the entire polynomial having same common factor
     # 1. make sure a and d have different parity
     if a_coeff % 2 == d_coeff % 2:
-        a_coeff = a_coeff + 1 if a_coeff != -1 else -2
+        parity_shift(a_coeff)
 
     # 2. make sure b != c
     if b_coeff == c_coeff:
-        b_coeff = b_coeff + 1 if b_coeff != -1 else -2
+        parity_shift(b_coeff)
 
     ab_coeff = a_coeff*b_coeff
     ac_coeff = a_coeff*c_coeff
@@ -123,6 +127,9 @@ def expanded_two_square_terms_same(x_unk: str = "x", y_unk: str = "y", **args):
 
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
+
+    if x_coeff == y_coeff: # entire polynomial c.f.
+        parity_shift(x_coeff)
 
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_coeff=x_coeff, y_coeff=y_coeff, x_unk=x_unk, y_unk=y_unk)
 
