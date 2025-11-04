@@ -128,7 +128,7 @@ def expanded_two_square_terms_same(x_unk: str = "x", y_unk: str = "y", **args):
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
 
-    if x_coeff == y_coeff: # entire polynomial c.f.
+    if x_coeff == y_coeff or x_coeff == -y_coeff: # entire polynomial c.f.
         parity_shift(x_coeff)
 
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_coeff=x_coeff, y_coeff=y_coeff, x_unk=x_unk, y_unk=y_unk)
