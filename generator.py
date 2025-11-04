@@ -170,6 +170,7 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     number = random_coeff()
     number_square = number**2
+    number_square_term = number_square
 
     if num_unk != "":
         number_square_term = append_unk_to_coeff(num_unk, number_square, 2)
