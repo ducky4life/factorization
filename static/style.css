@@ -45,6 +45,10 @@ a:active {
   text-decoration-color: var(--tertiary-color);
 }
 
+body {
+  color: white;
+}
+
 .bg-fixed {
   position: fixed;
   inset: 0;
