@@ -94,3 +94,6 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 - [ ] toggle including answers
 - [ ] 0/1 square terms
 - [ ] swapping signs
+- [ ] insanity mode for max coefficients
+- [ ] api if i'm feeling really bored
+- [ ] make sure the entire polynomial has no common factors lol (check for negative coefficients)
