@@ -99,11 +99,11 @@ def expanded_no_square_terms(**args):
     # avoid the entire polynomial having same common factor
     # 1. make sure a and d have different parity
     if a_coeff % 2 == d_coeff % 2:
-        parity_shift(a_coeff)
+        a_coeff = parity_shift(a_coeff)
 
     # 2. make sure b != c
-    if b_coeff == c_coeff:
-        parity_shift(b_coeff)
+    if b_coeff == c_coeff or b_coeff == -c_coeff:
+        b_coeff = parity_shift(b_coeff)
 
     ab_coeff = a_coeff*b_coeff
     ac_coeff = a_coeff*c_coeff
