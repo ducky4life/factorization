@@ -170,7 +170,7 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     number = random_coeff()
     number_square = number**2
-    number_square_term = number_square
+    number_square_term = with_sign(number_square)
 
     if num_unk != "":
         number_square_term = append_unk_to_coeff(num_unk, number_square, 2)
@@ -178,11 +178,11 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
     expanded_polynomial = []
 
     if perfect_square_common_factor_coeff < 0:
-        append_all_to_list(expanded_polynomial, f"+{number_square_term}", perfect_square)
+        append_all_to_list(expanded_polynomial, number_square_term, perfect_square)
 
         answer = f"({number}+)"
     else:
-        append_all_to_list(expanded_polynomial, perfect_square, f"-{number_square_term}")
+        append_all_to_list(expanded_polynomial, perfect_square, number_square_term)
 
     return(expanded_polynomial)
 
