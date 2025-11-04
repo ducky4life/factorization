@@ -6,7 +6,7 @@ def random_coeff_pos(max_incl: int = 9):
 def random_coeff(min_incl: int = -9, max_incl: int = 9):
     number = random.randint(min_incl, max_incl)
     if number == 0:
-        number = random.choice([min_incl, max_incl]) # avoid recursive
+        number = int(random.choice([min_incl, max_incl])) # avoid recursive
     return number
 
 def with_sign(coeff: int):
