@@ -6,7 +6,7 @@ def random_coeff_pos(max_incl: int = 9):
 def random_coeff(min_incl: int = -9, max_incl: int = 9):
     number = random.randint(min_incl, max_incl)
     if number == 0:
-        number = min_incl # avoid recursive
+        number = random.choice([min_incl, max_incl]) # avoid recursive
     return number
 
 def with_sign(coeff: int):
@@ -66,6 +66,40 @@ def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None
 
     expanded_polynomial = []
     append_all_to_list(expanded_polynomial, x2_term, middle_term, y2_term)
+
+    return(expanded_polynomial)
+
+
+def expanded_no_square_terms(**args):
+    unk_list = ["a", "b", "c", "d", ""]
+    unk_list.pop(random_coeff(0, 4))
+    random.shuffle(unk_list)
+
+    a = unk_list[0]
+    b = unk_list[1]
+    c = unk_list[2]
+    d = unk_list[3]
+
+    # a(b+c) + d(b+c) = ab + ac + db + dc
+
+    a_coeff = random_coeff(-3, 3)
+    b_coeff = random_coeff(-3, 3)
+    c_coeff = random_coeff(-3, 3)
+    d_coeff = random_coeff(-3, 3)
+
+    ab_coeff = a_coeff*b_coeff
+    ac_coeff = a_coeff*c_coeff
+    db_coeff = d_coeff*b_coeff
+    dc_coeff = d_coeff*b_coeff
+
+    ab_term = append_unk_to_coeff(random.choice([a+b, b+a]), ab_coeff)
+    ac_term = append_unk_to_coeff(random.choice([a+c, c+a]), ac_coeff)
+    db_term = append_unk_to_coeff(random.choice([d+b, b+d]), db_coeff)
+    dc_term = append_unk_to_coeff(random.choice([d+c, c+d]), dc_coeff)
+
+    expanded_polynomial = []
+
+    append_all_to_list(expanded_polynomial, ab_term, ac_term, db_term, dc_term)
 
     return(expanded_polynomial)
 
@@ -152,9 +186,12 @@ def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
 
     if polynomial_type == "mixed":
-        polynomial_type = random.choice(["2_sq_same", "2_sq_diff", "3_sq", "perf_sq"])
+        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq"])
 
     match polynomial_type:
+        case "0_sq":
+            result = expanded_no_square_terms(**args)
+            
         case "2_sq_same":
             result = expanded_two_square_terms_same(**args)
 

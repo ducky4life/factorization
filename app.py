@@ -21,7 +21,7 @@ def main_route():
     shuffle = ""
 
     polynomial_type = request.form.get("polynomial_type")
-    amount = int(request.form.get("amount")) if type(request.form.get("amount")) == int else 1
+    amount = int(request.form.get("amount")) if request.form.get("amount") else 1
     shuffle = request.form.get("shuffle")
     output_as_file = request.form.get("output_as_file")
 
