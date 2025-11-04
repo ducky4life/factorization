@@ -54,7 +54,7 @@ def append_all_to_list(list_to_append: list, *args):
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
 
     if common_factor_coeff == None:
-        common_factor_coeff = random_coeff(-4, 4)
+        common_factor_coeff = random_coeff(-3, 3)
     if x_coeff == None:
         x_coeff = random_coeff(-6, 6)
     if y_coeff == None:
