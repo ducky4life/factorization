@@ -129,7 +129,7 @@ def expanded_two_square_terms_same(x_unk: str = "x", y_unk: str = "y", **args):
     y_coeff = random_coeff(-3, 3)
     print(1, x_coeff, y_coeff)
 
-    if x_coeff == y_coeff or x_coeff == -y_coeff: # entire polynomial c.f.
+    if abs(x_coeff) == abs(y_coeff): # entire polynomial c.f.
         x_coeff = parity_shift(x_coeff)
     
     print(2, x_coeff, y_coeff)
@@ -158,7 +158,7 @@ def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
     x_coeff = random_coeff_pos(7) # positive so i can control diff sign
     y_coeff = random_coeff_pos(7)
 
-    if x_coeff == y_coeff or x_coeff == -y_coeff:
+    if abs(x_coeff) == abs(y_coeff):
         x_coeff = parity_shift(x_coeff)
 
     degree_one_common_factor_coeff = random_coeff(-3, 3)
