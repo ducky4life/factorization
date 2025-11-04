@@ -49,6 +49,11 @@ body {
   color: white;
 }
 
+html,
+body a {
+  cursor: url("./favicon.ico"), auto;
+}
+
 .bg-fixed {
   position: fixed;
   inset: 0;
