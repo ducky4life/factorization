@@ -269,7 +269,7 @@ def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
 
     if polynomial_type == "mixed":
-        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq"])
+        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
 
     match polynomial_type:
         case "0_sq":
@@ -286,6 +286,9 @@ def process_input(polynomial_type: str, shuffle: str, **args):
 
         case "perf_sq":
             result = expanded_perfect_square(**args)
+
+        case "diff_sq":
+            result = linear_difference_of_squares(**args)
 
     if shuffle == "on":
         shuffle_list(result)
