@@ -107,12 +107,12 @@ def expanded_no_square_terms(**args):
     d_coeff = random_coeff(-3, 3)
 
     # avoid the entire polynomial having same common factor
-    # 1. make sure a and d have different parity
-    if a_coeff % 2 == d_coeff % 2:
+    # 1. make sure a and d are relatively prime
+    if a_coeff % 2 == d_coeff % 2 == 0:
         a_coeff = parity_shift(a_coeff)
 
     # 2. make sure b != c
-    if b_coeff == c_coeff or b_coeff == -c_coeff:
+    if abs(b_coeff) == abs(c_coeff):
         b_coeff = parity_shift(b_coeff)
 
     ab_coeff = a_coeff*b_coeff
