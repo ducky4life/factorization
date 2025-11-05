@@ -25,6 +25,16 @@ def with_sign(coeff: int):
 
     return(f"{sign}{coeff}")
 
+def linear_generator(x_unk: str = "x", y_unk: str = "y"):
+    x_coeff = random_coeff(-3, 3)
+    y_coeff = random_coeff(-3, 3)
+
+    if abs(x_coeff) == abs(y_coeff):
+        x_coeff = parity_shift(x_coeff)
+
+    linear_unk = "(" + x_unk + with_sign(y_unk) + ")"
+    return(linear_unk)
+
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1):
     if power == 2:
         return(f"{with_sign(coeff)}{unk}²")
