@@ -96,8 +96,9 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 ## to do list
 
 - [ ] toggle including answers
-- [ ] 0/1 square terms
-- [ ] swapping signs
+- [x] 0/1 square terms
+- [x] swapping signs function
+- [ ] actually implement swapping signs
 - [ ] insanity mode for max coefficients
 - [ ] api if i'm feeling really bored
-- [ ] make sure the entire polynomial has no common factors lol (check for negative coefficients)
+- [x] make sure the entire polynomial has no common factors lol (check for negative coefficients) <- hopefully works
