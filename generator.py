@@ -107,8 +107,7 @@ def expanded_no_square_terms(**args):
     d_coeff = random_coeff(-3, 3)
 
     # avoid the entire polynomial having same common factor
-    # 1. make sure a and d are relatively prime
-    if a_coeff % 2 == d_coeff % 2 == 0: # remove == 0 if coeff max is 9 (3 is factor)
+    if abs(a_coeff) == abs(d_coeff):
         a_coeff = parity_shift(a_coeff)
 
     # 2. make sure b != c
