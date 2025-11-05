@@ -21,10 +21,17 @@ def main_route():
     shuffle = ""
 
     polynomial_type = request.form.get("polynomial_type")
-    amount = int(request.form.get("amount")) if request.form.get("amount") else 1
+    amount_str = request.form.get("amount") if request.form.get("amount") else 1
     shuffle = request.form.get("shuffle")
     output_as_file = request.form.get("output_as_file")
 
+    amount = 1
+
+    try:
+        amount = int(amount_str)
+    except ValueError:
+        error = "please enter an integer as amount"
+        
     if amount > 999: # why do you need this many
         amount = 1000
 

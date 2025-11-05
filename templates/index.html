@@ -86,12 +86,12 @@
       </form>
       <br>
 
-      {% for polynomial in message %}
-            <p>{{  polynomial  }}</p>
-      {% endfor %}
       {% if error %}
             <p>{{  error  }}</p>
       {% endif %}
+      {% for polynomial in message %}
+            <p>{{  polynomial  }}</p>
+      {% endfor %}
 
     </body>
   </section>
