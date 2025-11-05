@@ -2,6 +2,10 @@
 
 i got too bored so i made a flask app to generate factorization exercises
 
+this could probably be a single file client side js site but i won't have as much fun typing typescript/javascript as doing it in python for anything longer than 100 lines
+
+and also i can make an api out of this if i wanted to in the future (not that anyone would actually use a factorization generator api lol)
+
 ## local usage
 
 deploying to vercel is always the fastest, but there are local options
