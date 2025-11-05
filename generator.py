@@ -25,21 +25,44 @@ def with_sign(coeff: int):
 
     return(f"{sign}{coeff}")
 
-def linear_generator(x_unk: str = "x", y_unk: str = "y"):
+def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False):
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
+
+    if minus_form: # output must be in (ax-by) form
+        x_coeff = random_coeff_pos(3)
+        y_coeff = -random_coeff_pos(3)
 
     if abs(x_coeff) == abs(y_coeff):
         x_coeff = parity_shift(x_coeff)
 
-    linear_unk = "(" + x_unk + with_sign(y_unk) + ")"
-    return(linear_unk)
+    x_term = append_unk_to_coeff(x_unk, x_coeff)
+    y_term = append_unk_to_coeff(y_unk, y_coeff)
 
-def append_unk_to_coeff(unk: str, coeff: int, power: int = 1):
+    linear_unk = (x_term + y_term).removeprefix("+")
+
+    linear_term = "(" + linear_unk + ")"
+    return(linear_term)
+
+# does not check if input is in (ax-by) form
+def flip_linear_term(term: str):
+    term = term.removeprefix("(").removesuffix(")")
+    term_list = term.split("-")
+
+    new_term = "(" + term_list[-1] + "-" + term_list[0] + ")"
+    return(new_term)
+
+def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
     if power == 2:
-        return(f"{with_sign(coeff)}{unk}²")
+        if sign:
+            return(f"{with_sign(coeff)}{unk}²")
+        else:
+            return(f"{coeff}{unk}²")
     else:
-        return(f"{with_sign(coeff)}{unk}")
+        if sign:
+            return(f"{with_sign(coeff)}{unk}")
+        else:
+            return(f"{coeff}{unk}")
 
 def shuffle_list(input_list: list):
     random.shuffle(input_list)
@@ -64,6 +87,27 @@ def append_all_to_list(list_to_append: list, *args):
         else:
             list_to_append.append(item)
 
+
+def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
+    first_linear_term = linear_generator(x_unk, y_unk)
+    second_linear_term = linear_generator(x_unk, y_unk)
+
+    while first_linear_term == second_linear_term:
+        second_linear_term = linear_generator(x_unk, y_unk)
+
+    first_square_coeff = random_coeff_pos(4)
+    second_square_coeff = random_coeff_pos(4)
+
+    if first_square_coeff%2 == second_square_coeff%2 == 0 or (first_square_coeff == second_square_coeff and first_square_coeff != 1):
+        first_square_coeff = parity_shift(first_square_coeff)
+
+    first_square_term = append_unk_to_coeff(first_linear_term, first_square_coeff**2, 2)
+    second_square_term = append_unk_to_coeff(second_linear_term, -second_square_coeff**2, 2)
+
+    polynomial = []
+
+    append_all_to_list(polynomial, first_square_term, second_square_term)
+    return(polynomial)
 
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
 
@@ -249,3 +293,4 @@ def process_input(polynomial_type: str, shuffle: str, **args):
     return result
 
 print(list_to_string(expanded_three_square_terms("(6a-1)")))
+print(list_to_string(linear_difference_of_squares(), True))
