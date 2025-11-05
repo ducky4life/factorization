@@ -4,9 +4,9 @@ def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
 
 def random_coeff(min_incl: int = -9, max_incl: int = 9):
-    number = random.randint(min_incl, max_incl)
+    number = random.randint(min_incl, max_incl-1) # don't include max: map getting 0 to max
     if number == 0:
-        number = random_coeff_pos(max_incl) # avoid recursive
+        number = max_incl # avoid recursive
     return number
 
 def parity_shift(unk):
