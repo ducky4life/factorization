@@ -6,7 +6,7 @@ this could probably be a single file client side js site but i won't have as muc
 
 and also i can make an api out of this if i wanted to in the future (not that anyone would actually use a factorization generator api lol)
 
-## polynomials generatable
+## factorization types supported
 
 - identities
    - 3 squares
