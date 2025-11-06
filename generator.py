@@ -63,7 +63,6 @@ def flip_linear_term(term: str):
 def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False):
     added_term = term
     new_list = []
-    print(term)
     
     for item in polynomial_list:
         if random_flip_sign:
@@ -228,12 +227,9 @@ def expanded_two_square_terms_same(x_unk: str = "x", y_unk: str = "y", **args):
 
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
-    print(1, x_coeff, y_coeff)
 
     if abs(x_coeff) == abs(y_coeff): # entire polynomial c.f.
         x_coeff = parity_shift(x_coeff)
-    
-    print(2, x_coeff, y_coeff)
 
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_coeff=x_coeff, y_coeff=y_coeff, x_unk=x_unk, y_unk=y_unk)
 
@@ -297,7 +293,6 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
     number = random_coeff()
     number_square = number**2 if perfect_square_common_factor_coeff < 0 else -number**2
     number_square_term = with_sign(number_square, False) 
-    print(number_square_term)
 
     if num_unk != "":
         number_square_term = with_sign(number_square, True)
