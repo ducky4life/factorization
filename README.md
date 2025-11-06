@@ -17,14 +17,30 @@ and also i can make an api out of this if i wanted to in the future (not that an
 - common factors only
    - no squares
    - degree one common factors (supports flipping signs: e.g. (x-2y) = -(2y-x))
+ 
+## local python file usage
 
-## local usage
+the code for the generator ([generator.py](https://github.com/ducky4life/factorization/blob/main/generator.py)) can be used without the web interface (no dependencies are needed). there are examples provided at the end of the file for usage.
+
+make sure you have [python](https://www.python.org/downloads/) installed.
+
+1. clone the repository/copy generator.py to a python file
+   ```
+   git clone https://github.com/ducky4life/factorization.git
+   cd factorization
+   ```
+2. run the included examples
+   ```
+   python generator.py
+   ```
+
+## local site usage
 
 deploying to vercel is always the fastest, but there are local options
 
 [![Deploy to Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/ducky4life/factorization)
 
-### Python
+### python
 
 make sure you have [python](https://www.python.org/downloads/) installed.
 
@@ -46,7 +62,7 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    ```
 5. go to http://localhost:8080/
 
-### Docker
+### docker
 
 make sure you have [docker](https://www.docker.com) installed.
 
@@ -54,7 +70,7 @@ make sure you have [docker](https://www.docker.com) installed.
 
 amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 
-#### Using pre-built images
+#### using pre-built images
 
 1. get the correct package for your archetecture
 
@@ -78,7 +94,7 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
    ```
 3. go to http://localhost:8080/
 
-#### Building the images from source (recommended)
+#### building the images from source (recommended)
 
 1. clone the repository
    ```
