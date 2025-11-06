@@ -25,7 +25,7 @@ def with_sign(coeff: int):
 
     return(f"{sign}{coeff}")
 
-def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False):
+def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False, trim: bool = True):
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
 
@@ -35,6 +35,8 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
 
     if with_common_factor:
         common_factor_coeff = random_coeff()
+        if trim == False:
+            common_factor_coeff = with_sign(common_factor_coeff)
 
     if abs(x_coeff) == abs(y_coeff):
         x_coeff = parity_shift(x_coeff)
@@ -45,7 +47,7 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
     linear_unk = (x_term + y_term).removeprefix("+")
 
     linear_term = "(" + linear_unk + ")"
-    return(common_factor_coeff + linear_term if with_common_factor else linear_term)
+    return(str(common_factor_coeff) + linear_term if with_common_factor else linear_term)
 
 # does not check if input is in (ax-by) form
 def flip_linear_term(term: str):
@@ -65,12 +67,12 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             if is_flip_sign:
                 added_term = flip_linear_term(term)
                 
-        if term in item:
+        if term in item or added_term in item:
             item = item + "²"
         elif item != "1":
-            item = item + term
+            item = item + added_term
         else:
-            item = term
+            item = added_term
     return(polynomial_list)
 
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
@@ -131,9 +133,9 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     return(polynomial)
 
 def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
-    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
-    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
-    third_linear_term = linear_generator(x_unk, y_unk, with_Common_factor_coeff=True)
+    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
+    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
+    third_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
 
     degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
     
@@ -338,3 +340,4 @@ def process_input(polynomial_type: str, shuffle: str, **args):
 
 print(list_to_string(expanded_three_square_terms("(6a-1)")))
 print(list_to_string(linear_difference_of_squares(), True))
+print(list_to_string(linear_degree_one_common_factor(True)))
