@@ -130,7 +130,7 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     append_all_to_list(polynomial, first_square_term, second_square_term)
     return(polynomial)
 
-def linear_degree_one_common_factor(x_unk: str = "x", y_unk: str = "y", flip_sign: bool = False, **args):
+def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
     first_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
     second_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
     third_linear_term = linear_generator(x_unk, y_unk, with_Common_factor_coeff=True)
@@ -304,7 +304,7 @@ def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
 
     if polynomial_type == "mixed":
-        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
+        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf_flip", "deg_1_cf_noflip"])
 
     match polynomial_type:
         case "0_sq":
@@ -324,6 +324,12 @@ def process_input(polynomial_type: str, shuffle: str, **args):
 
         case "diff_sq":
             result = linear_difference_of_squares(**args)
+
+        case "deg_1_cf_flip":
+            result = linear_degree_one_common_factor(True, **args)
+
+        case "deg_1_cf_noflip":
+            result = linear_degree_one_common_factor(False, **args)
 
     if shuffle == "on":
         shuffle_list(result)
