@@ -55,8 +55,16 @@ def flip_linear_term(term: str):
     new_term = "(" + term_list[-1] + "-" + term_list[0] + ")"
     return(new_term)
 
-def multiply_term_to_polynomial(term: str, polynomial_list: list):
+def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False):
+    added_term = term
+    
     for item in polynomial_list:
+        
+        if random_flip_sign:
+            is_flip_sign = random.choice([True, False])
+            if is_flip_sign:
+                added_term = flip_linear_term(term)
+                
         if term in item:
             item = item + "²"
         elif item != "1":
@@ -123,8 +131,18 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     return(polynomial)
 
 def linear_degree_one_common_factor(x_unk: str = "x", y_unk: str = "y", flip_sign: bool = False, **args):
-    first_linear_term = linear_generator()
+    first_linear_term = linear_generator(x_unk, y_unk)
+    second_linear_term = linear_generator(x_unk, y_unk)
+    third_linear_term = linear_generator(x_unk, y_unk)
+
+    degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
+    
     polynomial = []
+    append_all_to_list(polynomial, first_linear_term, second_linear_term, third_linear_term)
+
+    if flip_sign:
+        polynomial = multiply_term_to_polynomial(degree_one_common_factor, polynomial, True)
+            
     return(polynomial)
 
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
