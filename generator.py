@@ -52,6 +52,14 @@ def flip_linear_term(term: str):
     new_term = "(" + term_list[-1] + "-" + term_list[0] + ")"
     return(new_term)
 
+def multiply_term_to_polynomial(term: str, polynomial_list: list):
+    for item in polynomial_list:
+        if item != "1":
+            item = item + term
+        else:
+            item = term
+        return(polynomial_list)
+
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
     if power == 2:
         if sign:
