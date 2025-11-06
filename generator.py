@@ -312,7 +312,9 @@ def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
 
     if polynomial_type == "mixed_all":
-        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf_flip", "deg_1_cf_noflip"])
+        polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf"])
+        if polynomial_type == "deg_1_cf":
+            polynomial_type = random.choice(["deg_1_cf_flip", "deg_1_cf_noflip"])
     elif polynomial_type == "mixed_no_deg_1":
         polynomial_type = random.choice(["2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
         
