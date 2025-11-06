@@ -6,6 +6,18 @@ this could probably be a single file client side js site but i won't have as muc
 
 and also i can make an api out of this if i wanted to in the future (not that anyone would actually use a factorization generator api lol)
 
+## polynomials generatable
+
+- identities
+   - 3 squares
+   - 2 squares (diff sign)
+   - 2 squares (same sign)
+   - difference of squares
+   - perfect squares
+- common factors only
+   - no squares
+   - degree one common factor (supports flipping signs: (x-2y) = -(2y-x))
+
 ## local usage
 
 deploying to vercel is always the fastest, but there are local options
@@ -98,7 +110,15 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 - [ ] toggle including answers
 - [x] 0/1 square terms
 - [x] swapping signs function
-- [ ] actually implement swapping signs
+- [x] actually implement swapping signs
 - [ ] insanity mode for max coefficients
 - [ ] api if i'm feeling really bored
-- [x] make sure the entire polynomial has no common factors lol (check for negative coefficients) <- hopefully works
+- make sure the entire polynomial has no common factors lol (check for negative coefficients)
+   - [x] 3 sq
+   - [x] 2 sq diff
+   - [x] 2 sq same
+   - [x] no sq
+   - [x] diff of sq
+   - [x] perf sq (common factor intentionally included)
+   - [ ] deg 1 c.f. flip
+   - [ ] deg 1 c.f. no flip

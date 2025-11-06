@@ -26,13 +26,13 @@ def with_sign(coeff: int, trim_one: bool = True):
 
     return(f"{sign}{coeff}")
 
-def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False, trim: bool = True):
-    x_coeff = random_coeff(-3, 3)
-    y_coeff = random_coeff(-3, 3)
+def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False, trim: bool = True, coeff_limit: int = 3):
+    x_coeff = random_coeff(-coeff_limit, coeff_limit)
+    y_coeff = random_coeff(-coeff_limit, coeff_limit)
 
     if minus_form: # output must be in (ax-by) form
-        x_coeff = random_coeff_pos(3)
-        y_coeff = -random_coeff_pos(3)
+        x_coeff = random_coeff_pos(coeff_limit)
+        y_coeff = -random_coeff_pos(coeff_limit)
 
     if with_common_factor:
         common_factor_coeff = random_coeff()
@@ -137,9 +137,9 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     return(polynomial)
 
 def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
-    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
-    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
-    third_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False)
+    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+    third_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
 
     degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
     
