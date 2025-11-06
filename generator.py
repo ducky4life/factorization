@@ -54,8 +54,8 @@ def flip_linear_term(term: str):
 
 def multiply_term_to_polynomial(term: str, polynomial_list: list):
     for item in polynomial_list:
-        if item == term:
-            item = term + "²"
+        if term in item:
+            item = item + "²"
         elif item != "1":
             item = item + term
         else:
