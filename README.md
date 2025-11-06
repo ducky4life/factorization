@@ -16,7 +16,7 @@ and also i can make an api out of this if i wanted to in the future (not that an
    - perfect squares
 - common factors only
    - no squares
-   - degree one common factor (supports flipping signs: (x-2y) = -(2y-x))
+   - degree one common factors (supports flipping signs: e.g. (x-2y) = -(2y-x))
 
 ## local usage
 
