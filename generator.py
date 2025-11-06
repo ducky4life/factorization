@@ -289,7 +289,7 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
     perfect_square = expanded_perfect_square(perfect_square_common_factor_coeff, x_unk=x_unk, y_unk=y_unk)
 
     number = random_coeff()
-    number_square = number**2
+    number_square = number**2 if perfect_square_common_factor_coeff < 0 else -number**2
     number_square_term = with_sign(number_square, False) 
     print(number_square_term)
 
