@@ -30,8 +30,8 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
     y_coeff = random_coeff(-3, 3)
 
     if minus_form: # output must be in (ax-by) form
-        x_coeff = random_coeff_pos(3)
-        y_coeff = -random_coeff_pos(3)
+        x_coeff = 1#random_coeff_pos(3)
+        y_coeff = -2#-random_coeff_pos(3)
 
     if with_common_factor:
         common_factor_coeff = random_coeff()
@@ -59,9 +59,10 @@ def flip_linear_term(term: str):
 
 def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False):
     added_term = term
+    new_list = []
+    print(term)
     
     for item in polynomial_list:
-        
         if random_flip_sign:
             is_flip_sign = random.choice([True, False])
             if is_flip_sign:
@@ -73,7 +74,9 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             item = item + added_term
         else:
             item = added_term
-    return(polynomial_list)
+
+        new_list.append(item)
+    return(new_list)
 
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
     if power == 2:
