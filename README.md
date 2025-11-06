@@ -1,6 +1,6 @@
 # factorization
 
-i got too bored so i made a flask app to generate factorization exercises
+factorization exercises generator made using flask and staring at coefficients for too much time
 
 this could probably be a single file client side js site but i won't have as much fun typing typescript/javascript as doing it in python for anything longer than 100 lines
 
