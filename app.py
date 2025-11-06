@@ -50,7 +50,7 @@ def main_route():
 
         if output_as_file == "on":
 
-            output_file_name = f"factorization_output_{int(time.time())}"
+            output_file_name = f"factorization_export_{int(time.time())}"
             response = Response("\n".join(message), mimetype="text/plain")
             response.headers["Content-Disposition"] = f"attachment; filename={output_file_name}"
             return response
