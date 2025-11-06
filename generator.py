@@ -321,7 +321,7 @@ def process_input(polynomial_type: str, shuffle: str, **args):
         if polynomial_type == "deg_1_cf":
             polynomial_type = random.choice(["deg_1_cf_flip", "deg_1_cf_noflip"])
             
-    elif polynomial_type == "mixed_no_deg_1":
+    elif polynomial_type == "mixed_identities_only":
         polynomial_type = random.choice(["2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
         
 
