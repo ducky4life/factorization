@@ -25,13 +25,16 @@ def with_sign(coeff: int):
 
     return(f"{sign}{coeff}")
 
-def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False):
+def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False):
     x_coeff = random_coeff(-3, 3)
     y_coeff = random_coeff(-3, 3)
 
     if minus_form: # output must be in (ax-by) form
         x_coeff = random_coeff_pos(3)
         y_coeff = -random_coeff_pos(3)
+
+    if with_common_factor:
+        common_factor_coeff = random_coeff()
 
     if abs(x_coeff) == abs(y_coeff):
         x_coeff = parity_shift(x_coeff)
@@ -42,7 +45,7 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
     linear_unk = (x_term + y_term).removeprefix("+")
 
     linear_term = "(" + linear_unk + ")"
-    return(linear_term)
+    return(common_factor_coeff + linear_term if with_common_factor else linear_term)
 
 # does not check if input is in (ax-by) form
 def flip_linear_term(term: str):
@@ -117,6 +120,11 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     polynomial = []
 
     append_all_to_list(polynomial, first_square_term, second_square_term)
+    return(polynomial)
+
+def linear_degree_one_common_factor(x_unk: str = "x", y_unk: str = "y", flip_sign: bool = False, **args):
+    first_linear_term = linear_generator()
+    polynomial = []
     return(polynomial)
 
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
