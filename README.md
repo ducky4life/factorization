@@ -1,10 +1,12 @@
 # factorization
 
-[factorization exercises generator](https://factorization-generator.vercel.app) made using flask and staring at coefficients for too much time
+factorization exercises generator made by using flask and staring at coefficients for too much time
 
 this could probably be a single file client side js site but i won't have as much fun typing typescript/javascript as doing it in python for anything longer than 100 lines
 
 and also i can make an api out of this if i wanted to in the future (not that anyone would actually use a factorization generator api lol)
+
+link: https://factorization-generator.vercel.app/
 
 ## factorization types supported
 
