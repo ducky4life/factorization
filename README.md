@@ -1,6 +1,6 @@
 # factorization
 
-factorization exercises generator made using flask and staring at coefficients for too much time
+[factorization exercises generator](https://factorization-generator.vercel.app) made using flask and staring at coefficients for too much time
 
 this could probably be a single file client side js site but i won't have as much fun typing typescript/javascript as doing it in python for anything longer than 100 lines
 
