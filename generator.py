@@ -97,7 +97,7 @@ def shuffle_list(input_list: list):
     random.shuffle(input_list)
     return input_list
 
-def list_to_string(input_list: list, trim: bool = False):
+def list_to_string(input_list: list, trim: bool = True):
     output_str = ""
 
     for item in input_list:
@@ -365,18 +365,18 @@ def process_input(polynomial_type: str, shuffle: str, **args):
 # examples
 
 # 3 square terms
-print("3 square terms: ", list_to_string(expanded_three_square_terms("(6a-1)"), True))
+print("3 square terms: ", list_to_string(expanded_three_square_terms("(6a-1)")))
 
 # 2 square terms
-print("2 square terms (diff sign): ", list_to_string(expanded_two_square_terms_diff(), True))
-print("2 square terms (same sign): ", list_to_string(expanded_two_square_terms_same(), True))
+print("2 square terms (diff sign): ", list_to_string(expanded_two_square_terms_diff()))
+print("2 square terms (same sign): ", list_to_string(expanded_two_square_terms_same()))
 
 # difference of squares
-print("difference of squares: ", list_to_string(linear_difference_of_squares(), True))
+print("difference of squares: ", list_to_string(linear_difference_of_squares()))
 
 # perfect squares
-print("perfect squares: ", list_to_string(expanded_perfect_square(), True))
+print("perfect squares: ", list_to_string(expanded_perfect_square()))
 
 # degree one common factor for an entire polynomial
-print("degree one common factor (flip signs):", list_to_string(linear_degree_one_common_factor(True), True))
-print("degree one common factor (without flipping signs):", list_to_string(linear_degree_one_common_factor(False), True))
+print("degree one common factor (flip signs):", list_to_string(linear_degree_one_common_factor(True)))
+print("degree one common factor (without flipping signs):", list_to_string(linear_degree_one_common_factor(False)))
