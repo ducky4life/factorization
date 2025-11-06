@@ -60,7 +60,7 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list):
             item = item + term
         else:
             item = term
-        return(polynomial_list)
+    return(polynomial_list)
 
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
     if power == 2:
