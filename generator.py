@@ -131,17 +131,16 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     return(polynomial)
 
 def linear_degree_one_common_factor(x_unk: str = "x", y_unk: str = "y", flip_sign: bool = False, **args):
-    first_linear_term = linear_generator(x_unk, y_unk)
-    second_linear_term = linear_generator(x_unk, y_unk)
-    third_linear_term = linear_generator(x_unk, y_unk)
+    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
+    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor_coeff=True)
+    third_linear_term = linear_generator(x_unk, y_unk, with_Common_factor_coeff=True)
 
     degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
     
     polynomial = []
     append_all_to_list(polynomial, first_linear_term, second_linear_term, third_linear_term)
 
-    if flip_sign:
-        polynomial = multiply_term_to_polynomial(degree_one_common_factor, polynomial, True)
+    polynomial = multiply_term_to_polynomial(degree_one_common_factor, polynomial, flip_sign)
             
     return(polynomial)
 
