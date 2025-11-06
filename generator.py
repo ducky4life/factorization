@@ -30,8 +30,8 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
     y_coeff = random_coeff(-3, 3)
 
     if minus_form: # output must be in (ax-by) form
-        x_coeff = 1#random_coeff_pos(3)
-        y_coeff = -2#-random_coeff_pos(3)
+        x_coeff = random_coeff_pos(3)
+        y_coeff = -random_coeff_pos(3)
 
     if with_common_factor:
         common_factor_coeff = random_coeff()
