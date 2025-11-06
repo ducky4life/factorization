@@ -1,5 +1,7 @@
 import random
 
+# helper functions
+
 def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
 
@@ -115,6 +117,9 @@ def append_all_to_list(list_to_append: list, *args):
             list_to_append.append(item)
 
 
+
+# generator functions
+
 def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     first_linear_term = linear_generator(x_unk, y_unk)
     second_linear_term = linear_generator(x_unk, y_unk)
@@ -136,6 +141,7 @@ def linear_difference_of_squares(x_unk: str = "x", y_unk: str = "y", **args):
     append_all_to_list(polynomial, first_square_term, second_square_term)
     return(polynomial)
 
+
 def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
     first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
     second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
@@ -149,6 +155,7 @@ def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y
     polynomial = multiply_term_to_polynomial(degree_one_common_factor, polynomial, flip_sign)
             
     return(polynomial)
+
 
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
 
@@ -281,7 +288,6 @@ def expanded_two_square_terms_diff(x_unk: str = "x", y_unk: str = "y", **args):
     return(expanded_polynomial)
 
 
-
 def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str = ""):
     answer = ""
     perfect_square_common_factor_coeff = random_coeff(-1, 1)
@@ -308,13 +314,18 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     return(expanded_polynomial)
 
+
+
+# for (randomly) choosing one of the generator functions
 def process_input(polynomial_type: str, shuffle: str, **args):
     result = []
 
     if polynomial_type == "mixed_all":
         polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf"])
+        
         if polynomial_type == "deg_1_cf":
             polynomial_type = random.choice(["deg_1_cf_flip", "deg_1_cf_noflip"])
+            
     elif polynomial_type == "mixed_no_deg_1":
         polynomial_type = random.choice(["2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
         
@@ -349,6 +360,23 @@ def process_input(polynomial_type: str, shuffle: str, **args):
 
     return result
 
-print(list_to_string(expanded_three_square_terms("(6a-1)")))
-print(list_to_string(linear_difference_of_squares(), True))
-print(list_to_string(linear_degree_one_common_factor(True)))
+
+
+# examples
+
+# 3 square terms
+print("3 square terms: ", list_to_string(expanded_three_square_terms("(6a-1)"), True))
+
+# 2 square terms
+print("2 square terms (diff sign): ", list_to_string(expanded_two_square_terms_diff(), True))
+print("2 square terms (same sign): ", list_to_string(expanded_two_square_terms_same(), True))
+
+# difference of squares
+print("difference of squares: ", list_to_string(linear_difference_of_squares(), True))
+
+# perfect squares
+print("perfect squares: ", list_to_string(expanded_perfect_square(), True))
+
+# degree one common factor for an entire polynomial
+print("degree one common factor (flip signs):", list_to_string(linear_degree_one_common_factor(True), True))
+print("degree one common factor (without flipping signs):", list_to_string(linear_degree_one_common_factor(False), True))
