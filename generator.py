@@ -13,15 +13,16 @@ def parity_shift(unk):
     unk = unk + 1 if unk != -1 else -2
     return unk
 
-def with_sign(coeff: int):
+def with_sign(coeff: int, trim_one: bool = True):
     sign = "+"
     if coeff < 0:
         sign = ""
 
-    if coeff == 1: # don't write out 1 as coeff
-        return(sign)
-    elif coeff == -1:
-        return("-")
+    if trim_one:
+        if coeff == 1: # don't write out 1 as coeff
+            return(sign)
+        elif coeff == -1:
+            return("-")
 
     return(f"{sign}{coeff}")
 
@@ -289,9 +290,11 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
     number = random_coeff()
     number_square = number**2
-    number_square_term = with_sign(number_square)
+    number_square_term = with_sign(number_square, False) 
+    print(number_square_term)
 
     if num_unk != "":
+        number_square_term = with_sign(number_square, True)
         number_square_term = append_unk_to_coeff(num_unk, number_square, 2)
 
     expanded_polynomial = []
