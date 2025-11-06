@@ -131,6 +131,7 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 - [x] actually implement swapping signs
 - [ ] insanity mode for max coefficients
 - [ ] api if i'm feeling really bored
+- [ ] increase probability for squared terms for deg 1 c.f.
 - make sure all terms in the polynomial don't share the same common factor lol (check for negative coefficients)
    - [x] 3 sq
    - [x] 2 sq diff
