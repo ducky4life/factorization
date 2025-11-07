@@ -2,6 +2,8 @@ import random
 
 # helper functions
 
+superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
+
 def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
 
@@ -12,7 +14,6 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
     return number
 
 def superscript(num: int = 2):
-    superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
     return(superscript_list[num] if num<10 else "2")
 
 def parity_shift(unk):
@@ -58,10 +59,13 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
 
 # does not check if input is in (ax-by) form
 def flip_linear_term(term: str):
-    term = term.removeprefix("(").removesuffix(")")
-    term_list = term.split("-")
+    term = term.removeprefix("(")
+    term_power = term.split(")")[-1]
+    term_list = term[0:term.index(")")].split("-")
 
     new_term = "(" + term_list[-1] + "-" + term_list[0] + ")"
+    if term_power in superscript_list:
+        new_term = new_term + term_power
     return(new_term)
 
 def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False):
@@ -175,7 +179,7 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
     while linear_common_factor in second_linear_term:
         second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
 
-    power = random_coeff_pos(4)
+    power = random_coeff(2, 4)
     
     common_factor_term = linear_common_factor + superscript(power)
     
@@ -397,12 +401,17 @@ print("3 square terms: ", list_to_string(expanded_three_square_terms("(6a-1)")))
 print("2 square terms (diff sign): ", list_to_string(expanded_two_square_terms_diff()))
 print("2 square terms (same sign): ", list_to_string(expanded_two_square_terms_same()))
 
+# no square terms
+print("no square terms: ", list_to_string(expanded_no_square_terms()))
+
 # difference of squares
 print("difference of squares: ", list_to_string(linear_difference_of_squares()))
 
 # perfect squares
 print("perfect squares: ", list_to_string(expanded_perfect_square()))
 
-# degree one common factor for an entire polynomial
+# common factors for an entire polynomial
 print("degree one common factor (flip signs):", list_to_string(linear_degree_one_common_factor(True)))
 print("degree one common factor (without flipping signs):", list_to_string(linear_degree_one_common_factor(False)))
+print("higher degrees common factor (flip signs):", list_to_string(higher_degree_common_factor(True)))
+print("higher degrees common factor (without flipping signs):", list_to_string(higher_degree_common_factor(False)))
