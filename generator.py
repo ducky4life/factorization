@@ -148,7 +148,7 @@ def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y
 
     degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
     
-    if random_coeff(3) == 1: # increase probability of squares happening
+    if random_coeff_pos(3) == 1: # increase probability of squares happening
         first_coeff = random_coeff(-5, 5)
         first_linear_term = append_unk_to_coeff(degree_one_common_factor, first_coeff)
     
