@@ -70,7 +70,7 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             if is_flip_sign:
                 added_term = flip_linear_term(term)
                 
-        if term in item or added_term in item:
+        if term in item or added_term in item or flip_linear_item(term) in item:
             item = item + "²"
         elif item != "1":
             item = item + added_term
@@ -147,6 +147,9 @@ def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y
     third_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
 
     degree_one_common_factor = linear_generator(x_unk, y_unk, flip_sign)
+    
+    if random_coeff(3) == 1: # increase probability of squares happening
+        first_linear_term = degree_one_common_factor
     
     polynomial = []
     append_all_to_list(polynomial, first_linear_term, second_linear_term, third_linear_term)
