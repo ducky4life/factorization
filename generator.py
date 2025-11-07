@@ -11,6 +11,10 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
         number = max_incl # avoid recursive
     return number
 
+def superscript(num: int = 2):
+    superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
+    return(superscript_list[num] if num<10 else "2")
+
 def parity_shift(unk):
     unk = unk + 1 if unk != -1 else -2
     return unk
@@ -81,11 +85,11 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
     return(new_list)
 
 def append_unk_to_coeff(unk: str, coeff: int, power: int = 1, sign: bool = True):
-    if power == 2:
+    if power != 1:
         if sign:
-            return(f"{with_sign(coeff)}{unk}²")
+            return(f"{with_sign(coeff)}{unk}{superscript(power)}")
         else:
-            return(f"{coeff}{unk}²")
+            return(f"{coeff}{unk}{superscript(power)}")
     else:
         if sign:
             return(f"{with_sign(coeff)}{unk}")
@@ -156,6 +160,29 @@ def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y
     append_all_to_list(polynomial, first_linear_term, second_linear_term, third_linear_term)
 
     polynomial = multiply_term_to_polynomial(degree_one_common_factor, polynomial, flip_sign)
+            
+    return(polynomial)
+
+
+def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
+    first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+    second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+
+    linear_common_factor = linear_generator(x_unk, y_unk, flip_sign)
+
+    while linear_common_factor in first_linear_term:
+        first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+    while linear_common_factor in second_linear_term:
+        second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
+
+    power = random_coeff_pos(4)
+    
+    common_factor_term = linear_common_factor + superscript(power)
+    
+    polynomial = []
+    append_all_to_list(polynomial, first_linear_term, second_linear_term)
+
+    polynomial = multiply_term_to_polynomial(common_factor_term, polynomial, flip_sign)
             
     return(polynomial)
 
