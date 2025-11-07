@@ -70,7 +70,7 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             if is_flip_sign:
                 added_term = flip_linear_term(term)
                 
-        if term in item or added_term in item or flip_linear_item(term) in item:
+        if term in item or added_term in item or flip_linear_term(term) in item:
             item = item + "²"
         elif item != "1":
             item = item + added_term
