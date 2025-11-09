@@ -44,7 +44,9 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 - [x] actually implement swapping signs
 - [ ] insanity mode for max coefficients
 - [ ] api if i'm feeling really bored
-- [ ] increase probability for squared terms for deg 1 c.f.
+- [x] increase probability for squared terms for deg 1 c.f.
+- [ ] randomize common factor terms order
+- [ ] flip for degree 2-4
 - make sure all terms in the polynomial don't share the same common factor lol (check for negative coefficients)
    - [x] 3 sq
    - [x] 2 sq diff
@@ -54,6 +56,8 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    - [x] perf sq (common factor intentionally included)
    - [ ] deg 1 c.f. flip
    - [ ] deg 1 c.f. no flip
+   - [ ] higher deg c.f. flip
+   - [ ] higher deg c.f. noflip
 
 ## local site usage
 
