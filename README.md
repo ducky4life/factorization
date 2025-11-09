@@ -47,7 +47,7 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 - [x] increase probability for squared terms for deg 1 c.f.
 - [ ] randomize common factor terms order
 - [ ] flip for degree 2-4
-- make sure all terms in the polynomial don't share the same common factor lol (check for negative coefficients)
+- make sure all terms in the polynomial don't share the same constant common factor lol (check for negative coefficients)
    - [x] 3 sq
    - [x] 2 sq diff
    - [x] 2 sq same
