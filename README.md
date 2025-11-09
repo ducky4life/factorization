@@ -36,6 +36,25 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    python generator.py
    ```
 
+## to do list
+
+- [ ] toggle including answers
+- [x] 0/1 square terms
+- [x] swapping signs function
+- [x] actually implement swapping signs
+- [ ] insanity mode for max coefficients
+- [ ] api if i'm feeling really bored
+- [ ] increase probability for squared terms for deg 1 c.f.
+- make sure all terms in the polynomial don't share the same common factor lol (check for negative coefficients)
+   - [x] 3 sq
+   - [x] 2 sq diff
+   - [x] 2 sq same
+   - [x] no sq
+   - [x] diff of sq
+   - [x] perf sq (common factor intentionally included)
+   - [ ] deg 1 c.f. flip
+   - [ ] deg 1 c.f. no flip
+
 ## local site usage
 
 deploying to vercel is always the fastest, but there are local options
@@ -49,9 +68,6 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 1. clone the repository
    ```
    git clone https://github.com/ducky4life/factorization.git
-   ```
-2. move into directory
-   ```
    cd factorization
    ```
 3. install dependencies
@@ -68,11 +84,7 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 
 make sure you have [docker](https://www.docker.com) installed.
 
-[building from source](https://github.com/ducky4life/factorization#building-the-images-from-source-recommended) is recommended since it is how i mainly test the packages and you get the most up to date dependencies.
-
-amd64 packages are not tested since i only have an arm64 rasp pi with docker.
-
-#### using pre-built images
+#### pre-built images
 
 1. get the correct package for your archetecture
 
@@ -101,12 +113,9 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
 1. clone the repository
    ```
    git clone https://github.com/ducky4life/factorization.git
-   ```
-2. move into directory
-   ```
    cd factorization
    ```
-3. build the docker image for your archetecture
+2. build docker image
 
    amd64:
    ```
@@ -116,28 +125,8 @@ amd64 packages are not tested since i only have an arm64 rasp pi with docker.
    ```
    docker build -t factorization-generator:latest -f arm64.Dockerfile .
    ```
-4. run the docker container
+4. run docker container
    ```
    docker run -p 8080:8080 --name factorization-generator factorization-generator:latest
    ```
 5. go to http://localhost:8080/
-
-
-## to do list
-
-- [ ] toggle including answers
-- [x] 0/1 square terms
-- [x] swapping signs function
-- [x] actually implement swapping signs
-- [ ] insanity mode for max coefficients
-- [ ] api if i'm feeling really bored
-- [ ] increase probability for squared terms for deg 1 c.f.
-- make sure all terms in the polynomial don't share the same common factor lol (check for negative coefficients)
-   - [x] 3 sq
-   - [x] 2 sq diff
-   - [x] 2 sq same
-   - [x] no sq
-   - [x] diff of sq
-   - [x] perf sq (common factor intentionally included)
-   - [ ] deg 1 c.f. flip
-   - [ ] deg 1 c.f. no flip
