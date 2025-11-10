@@ -81,9 +81,10 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             if is_flip_sign:
                 added_term = flip_linear_term(term)
                 
-        if term in item or added_term in item or flip_linear_term(term) in item:
+        if term in item or flip_linear_term(term) in item:
             if higher_degree:
                 item_power = local_superscript_list.index(term.split(")")[-1]) + 1
+                print("item power ",item_power)
                 item = item + superscript(item_power)
             else:
                 item = item + "²"
