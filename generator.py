@@ -70,7 +70,8 @@ def flip_linear_term(term: str):
         new_term = new_term + term_power
     return(new_term)
 
-def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False):
+def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False, higher_degree: bool = False):
+    local_superscript_list = superscript_list
     added_term = term
     new_list = []
     
@@ -81,7 +82,11 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
                 added_term = flip_linear_term(term)
                 
         if term in item or added_term in item or flip_linear_term(term) in item:
-            item = item + "²"
+            if higher_degree:
+                item_power = local_superscript_list.index(term.split(")")[-1]) + 1
+                item = item + superscript(item_power)
+            else:
+                item = item + "²"
         elif item != "1":
             item = item + added_term
         else:
