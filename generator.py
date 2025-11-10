@@ -75,16 +75,18 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
     linear_term = term[0:term.index(")")]
     added_term = term
     new_list = []
+
+    if higher_degree:
+        item_power = local_superscript_list.index(term.split(")")[-1]) + 1
     
     for item in polynomial_list:
         if random_flip_sign:
             is_flip_sign = random.choice([True, False])
             if is_flip_sign:
-                added_term = flip_linear_term(term)
+                added_term = flip_linear_term(linear_term) + item_power if higher_degree else flip_linear_term(linear_term)
                 
         if linear_term in item or flip_linear_term(linear_term) in item:
             if higher_degree:
-                item_power = local_superscript_list.index(term.split(")")[-1]) + 1
                 item = item + superscript(item_power)
             else:
                 item = item + "²"
