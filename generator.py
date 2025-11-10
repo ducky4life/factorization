@@ -73,7 +73,7 @@ def flip_linear_term(term: str):
 def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False, higher_degree: bool = False):
     local_superscript_list = superscript_list
     linear_power = term.split(")")[-1]
-    linear_term = term[0:-2] if linear_power in local_superscript_list else term
+    linear_term = term[0:term.index(")")] if linear_power in local_superscript_list else term
     added_term = term
     new_list = []
     
