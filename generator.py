@@ -15,7 +15,7 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
 
 def superscript(num: int = 2):
     local_superscript_list = superscript_list
-    return(local_superscript_list[num] if num<10 else "2")
+    return(local_superscript_list[num] if num<10 else local_superscript_list[2])
 
 def parity_shift(unk):
     unk = unk + 1 if unk != -1 else -2
