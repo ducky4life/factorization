@@ -193,7 +193,7 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
     
     if random_coeff_pos(3) == 1: # chance for same linear generator
         first_coeff = random_coeff(-5, 5)
-        first_linear_term = append_unk_to_coeff(common_factor_term, first_coeff)
+        first_linear_term = append_unk_to_coeff(linear_common_factor, first_coeff)
         first_linear_equal_common_factor = True
     
     polynomial = []
