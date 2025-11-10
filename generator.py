@@ -14,7 +14,8 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
     return number
 
 def superscript(num: int = 2):
-    return(superscript_list[num] if num<10 else "2")
+    local_superscript_list = superscript_list
+    return(local_superscript_list[num] if num<10 else "2")
 
 def parity_shift(unk):
     unk = unk + 1 if unk != -1 else -2
@@ -59,12 +60,13 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
 
 # does not check if input is in (ax-by) form
 def flip_linear_term(term: str):
+    local_superscript_list = superscript_list
     term = term.removeprefix("(")
     term_power = term.split(")")[-1]
     term_list = term[0:term.index(")")].split("-")
 
     new_term = "(" + term_list[-1] + "-" + term_list[0] + ")"
-    if term_power in superscript_list:
+    if term_power in local_superscript_list:
         new_term = new_term + term_power
     return(new_term)
 
