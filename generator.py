@@ -176,6 +176,7 @@ def linear_degree_one_common_factor(flip_sign: bool = False, x_unk: str = "x", y
 
 
 def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk: str = "y", **args):
+    first_linear_equal_common_factor = False
     first_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
     second_linear_term = linear_generator(x_unk, y_unk, with_common_factor=True, trim=False, coeff_limit=5)
 
@@ -193,11 +194,12 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
     if random_coeff_pos(3) == 1: # chance for same linear generator
         first_coeff = random_coeff(-5, 5)
         first_linear_term = append_unk_to_coeff(common_factor_term, first_coeff)
+        first_linear_equal_common_factor = True
     
     polynomial = []
     append_all_to_list(polynomial, first_linear_term, second_linear_term)
 
-    polynomial = multiply_term_to_polynomial(common_factor_term, polynomial, flip_sign)
+    polynomial = multiply_term_to_polynomial(common_factor_term, polynomial, flip_sign, first_linear_equal_common_factor)
             
     return(polynomial)
 
