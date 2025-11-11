@@ -38,15 +38,16 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 
 ## to do list
 
-- [ ] toggle including answers
+- [ ] toggle including answers: make something to access the coefficients
+    - you can probably make an answer validator if you do this
 - [x] 0/1 square terms
 - [x] swapping signs function
 - [x] actually implement swapping signs
-- [ ] insanity mode for max coefficients
+- [ ] insanity mode for max coefficients (maybe a global toggle for the random generator function instead of manually setting every limit)
 - [ ] api if i'm feeling really bored
 - [x] increase probability for squared terms for deg 1 c.f.
 - [ ] randomize common factor terms order
-- [ ] flip for degree 2-4
+- [x] flip for degree 2-4
 - make sure all terms in the polynomial don't share the same constant common factor lol (check for negative coefficients)
    - [x] 3 sq
    - [x] 2 sq diff
