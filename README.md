@@ -18,7 +18,7 @@ link: https://factorization-generator.vercel.app/
    - perfect squares
 - common factors only
    - no squares
-   - degree one common factors (supports flipping signs: e.g. (x-2y) = -(2y-x))
+   - degree 1-4 common factors (supports flipping signs: e.g. (x-2y) = -(2y-x))
  
 ## local python file usage
 
@@ -56,8 +56,8 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    - [x] perf sq (common factor intentionally included)
    - [ ] deg 1 c.f. flip
    - [ ] deg 1 c.f. no flip
-   - [ ] higher deg c.f. flip
-   - [ ] higher deg c.f. noflip
+   - [x] higher deg c.f. flip (intentional)
+   - [x] higher deg c.f. noflip (intentional)
 
 ## local site usage
 
