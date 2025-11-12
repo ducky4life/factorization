@@ -43,6 +43,7 @@ make sure you have [python](https://www.python.org/downloads/) installed.
 - [x] 0/1 square terms
 - [x] swapping signs function
 - [x] actually implement swapping signs
+- [ ] perfect square (linear): force common factor
 - [ ] insanity mode for max coefficients (maybe a global toggle for the random generator function instead of manually setting every limit)
 - [ ] api if i'm feeling really bored
 - [x] increase probability for squared terms for deg 1 c.f.
