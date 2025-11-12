@@ -1,4 +1,5 @@
 import random
+import math
 
 # helper functions
 
@@ -212,17 +213,22 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
 
 
 def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
-    x_coeff = random_coeff_pos(6)
+    x_coeff = random_coeff(2, 6)
     y_coeff = -random_coeff(2, 6)
         
-    split_int = -random_coeff_pos(abs(y_coeff)-1) # (6x-3) = (6x-1 -2)
-    original_linear_term = linear_generator(x_unk, y_unk, x_coeff=x_coeff, y_coeff=y_coeff-split_int)
-    print(original_linear_term)
-    common_factor_coeff = 1
+    split_int = -random_coeff_pos(abs(y_coeff)-1) # (6x-4) = (6x-3 -1) = 3(2x-1) -1 = 3a-1
+    new_y_coeff = y_coeff - split_int
 
-    new_linear_term = linear_generator("a", "", x_coeff=common_factor_coeff, y_coeff=split_int)
-    print(new_linear_term)
+    #original_linear_term = linear_generator(x_unk, y_unk, x_coeff=x_coeff, y_coeff=new_y_coeff)
+    #print(original_linear_term)
+    common_factor_coeff = math.gcd(x_coeff, new_y_coeff)
+    simplified_x_coeff = int(x_coeff/common_factor_coeff)
+    simplified_y_coeff = int(new_y_coeff/common_factor_coeff)
+
+    new_linear_term = linear_generator(x_unk, y_unk, x_coeff=simplified_x_coeff, y_coeff=simplified_y_coeff)
+    
     perfect_square_term = expanded_perfect_square(1, common_factor_coeff, split_int, new_linear_term, "")
+
     polynomial = []
     append_all_to_list(polynomial, perfect_square_term)
     return(polynomial)
