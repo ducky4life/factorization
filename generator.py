@@ -54,6 +54,9 @@ def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = Fals
     x_term = append_unk_to_coeff(x_unk, x_coeff)
     y_term = append_unk_to_coeff(y_unk, y_coeff)
 
+    if y_unk == "":
+        y_term = with_sign(y_coeff, False)
+
     linear_unk = (x_term + y_term).removeprefix("+")
 
     linear_term = "(" + linear_unk + ")"
@@ -209,24 +212,17 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
 
 
 def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
-    x_coeff = random_coeff_pos(3)
-    y_coeff = -random_coeff_pos(3)
-    if abs(x_coeff) == abs(y_coeff):
-        x_coeff = parity_shift(x_coeff)
+    x_coeff = random_coeff_pos(6)
+    y_coeff = -random_coeff(2, 6)
         
-    original_linear_term = linear_generator(x_unk, y_unk, x_coeff=x_coeff, y_coeff=y_coeff)
-    common_factor_coeff = random_coeff_pos(3)
-    target_factor = 3 if common_factor_coeff == 2 else 2
-    
-    new_x_coeff = x_coeff*common_factor_coeff
-    new_y_coeff = y_coeff*common_factor_coeff
-    
-    split_int = 0
-    while new_x_coeff%target_factor != new_y_coeff%target_factor: # subtract from y coeff until have common factor
-        split_int = split_int + 1
-        new_y_coeff = new_y_coeff - split_int
+    split_int = -random_coeff_pos(abs(y_coeff)-1) # (6x-3) = (6x-1 -2)
+    original_linear_term = linear_generator(x_unk, y_unk, x_coeff=x_coeff, y_coeff=y_coeff-split_int)
+    print(original_linear_term)
+    common_factor_coeff = 1
 
-    perfect_square_term = expanded_perfect_square(1, common_factor_coeff, -split_int, original_linear_term, y_unk)
+    new_linear_term = linear_generator("a", "", x_coeff=common_factor_coeff, y_coeff=split_int)
+    print(new_linear_term)
+    perfect_square_term = expanded_perfect_square(1, common_factor_coeff, split_int, new_linear_term, "")
     polynomial = []
     append_all_to_list(polynomial, perfect_square_term)
     return(polynomial)
@@ -249,6 +245,9 @@ def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None
 
     x2_term = append_unk_to_coeff(x_unk, x2_coeff, 2)
     y2_term = append_unk_to_coeff(y_unk, y2_coeff, 2)
+
+    if y_unk == "":
+        y2_term = with_sign(y2_coeff, False)
 
     expanded_polynomial = []
     append_all_to_list(expanded_polynomial, x2_term, middle_term, y2_term)
