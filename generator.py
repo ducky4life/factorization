@@ -34,21 +34,22 @@ def with_sign(coeff: int, trim_one: bool = True):
 
     return(f"{sign}{coeff}")
 
-def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False, trim: bool = True, coeff_limit: int = 3):
-    x_coeff = random_coeff(-coeff_limit, coeff_limit)
-    y_coeff = random_coeff(-coeff_limit, coeff_limit)
-
-    if minus_form: # output must be in (ax-by) form
-        x_coeff = random_coeff_pos(coeff_limit)
-        y_coeff = -random_coeff_pos(coeff_limit)
-
-    if with_common_factor:
-        common_factor_coeff = random_coeff()
-        if trim == False:
-            common_factor_coeff = with_sign(common_factor_coeff)
-
-    if abs(x_coeff) == abs(y_coeff):
-        x_coeff = parity_shift(x_coeff)
+def linear_generator(x_unk: str = "x", y_unk: str = "y", minus_form: bool = False, with_common_factor: bool = False, trim: bool = True, coeff_limit: int = 3, x_coeff: int = None, y_coeff: int = None):
+    if x_coeff == None and y_coeff == None:
+        x_coeff = random_coeff(-coeff_limit, coeff_limit)
+        y_coeff = random_coeff(-coeff_limit, coeff_limit)
+    
+        if minus_form: # output must be in (ax-by) form
+            x_coeff = random_coeff_pos(coeff_limit)
+            y_coeff = -random_coeff_pos(coeff_limit)
+    
+        if with_common_factor:
+            common_factor_coeff = random_coeff()
+            if trim == False:
+                common_factor_coeff = with_sign(common_factor_coeff)
+    
+        if abs(x_coeff) == abs(y_coeff):
+            x_coeff = parity_shift(x_coeff)
 
     x_term = append_unk_to_coeff(x_unk, x_coeff)
     y_term = append_unk_to_coeff(y_unk, y_coeff)
@@ -205,6 +206,14 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
     polynomial = multiply_term_to_polynomial(common_factor_term, polynomial, flip_sign, first_linear_equal_common_factor)
             
     return(polynomial)
+
+
+def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
+    x_coeff = random_coeff_pos(3)
+    y_coeff = -random_coeff_pos(3)
+    original_linear_term = linear_generator(x_unk, y_unk)
+
+    # split
 
 
 def expanded_perfect_square(common_factor_coeff: int = None, x_coeff: int = None, y_coeff: int = None, x_unk: str = "x", y_unk: str = "y", **args):
