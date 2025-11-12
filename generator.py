@@ -213,8 +213,8 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
 
 
 def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
-    x_coeff = random_coeff(2, 6)
-    y_coeff = -random_coeff(2, 6)
+    x_coeff = random_coeff(2, 9)
+    y_coeff = -random_coeff(2, 9)
         
     split_int = -random_coeff_pos(abs(y_coeff)-1) # (6x-4) = (6x-3 -1) = 3(2x-1) -1 = 3a-1
     new_y_coeff = y_coeff - split_int
@@ -401,6 +401,8 @@ def process_input(polynomial_type: str, shuffle: str, **args):
         
         if polynomial_type == "deg_1_cf":
             polynomial_type = random.choice(["deg_1_cf_flip", "deg_1_cf_noflip"])
+        elif polynomial_type == "perf_sq":
+            polynomial_type = random.choice(["perf_sq_1", "perf_sq_2"])
         elif polynomial_type == "higher_deg_cf":
             polynomial_type = random.choice(["higher_deg_cf_flip", "higher_deg_cf_noflip"])
             
@@ -421,8 +423,11 @@ def process_input(polynomial_type: str, shuffle: str, **args):
         case "3_sq":
             result = expanded_three_square_terms(**args)
 
-        case "perf_sq":
+        case "perf_sq_1":
             result = expanded_perfect_square(**args)
+
+        case "perf_sq_2":
+            result = linear_perfect_square(**args)
 
         case "diff_sq":
             result = linear_difference_of_squares(**args)
