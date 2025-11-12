@@ -458,9 +458,10 @@ print("difference of squares: ", list_to_string(linear_difference_of_squares()))
 
 # perfect squares
 print("perfect squares: ", list_to_string(expanded_perfect_square()))
+print("linear term perfect squares: ", list_to_string(linear_perfect_square()))
 
 # common factors for an entire polynomial
-print("degree one common factor (flip signs):", list_to_string(linear_degree_one_common_factor(True)))
-print("degree one common factor (without flipping signs):", list_to_string(linear_degree_one_common_factor(False)))
-print("higher degrees common factor (flip signs):", list_to_string(higher_degree_common_factor(True)))
-print("higher degrees common factor (without flipping signs):", list_to_string(higher_degree_common_factor(False)))
+print("degree one common factor (flip signs): ", list_to_string(linear_degree_one_common_factor(True)))
+print("degree one common factor (without flipping signs): ", list_to_string(linear_degree_one_common_factor(False)))
+print("higher degrees common factor (flip signs): ", list_to_string(higher_degree_common_factor(True)))
+print("higher degrees common factor (without flipping signs): ", list_to_string(higher_degree_common_factor(False)))
