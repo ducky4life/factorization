@@ -215,6 +215,10 @@ def higher_degree_common_factor(flip_sign: bool = False, x_unk: str = "x", y_unk
 def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
     x_coeff = random_coeff(2, 9)
     y_coeff = -random_coeff(2, 9)
+
+    while math.gcd(x_coeff, y_coeff) == 1:
+        x_coeff = random_coeff(2, 9)
+        y_coeff = -random_coeff(2, 9)
         
     split_int = -random_coeff_pos(abs(y_coeff)-1) # (6x-4) = (6x-3 -1) = 3(2x-1) -1 = 3a-1
     new_y_coeff = y_coeff - split_int
