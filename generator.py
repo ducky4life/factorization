@@ -454,10 +454,10 @@ def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **
             result = linear_degree_one_common_factor(False, x_unk=x_unk, y_unk=y_unk, **args)
 
         case "higher_deg_cf_flip":
-            result = higher_degree_common_factor(True, **args)
+            result = higher_degree_common_factor(True, x_unk=x_unk, y_unk=y_unk, **args)
 
         case "higher_deg_cf_noflip":
-            result = higher_degree_common_factor(False, **args)
+            result = higher_degree_common_factor(False, x_unk=x_unk, y_unk=y_unk, **args)
 
     if shuffle == "on":
         shuffle_list(result)
