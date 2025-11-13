@@ -16,6 +16,7 @@ link: https://factorization-generator.vercel.app/
    - 2 squares (same sign)
    - difference of squares
    - perfect squares
+   - perfect squares of (ax-by) with forced common factor after factorizing
 - common factors only
    - no squares
    - degree 1-4 common factors (supports flipping signs: e.g. (x-2y) = -(2y-x))
