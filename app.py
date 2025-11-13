@@ -37,6 +37,8 @@ def main_route():
     
     x_unk = request.form.get("x_unk") if request.form.get("x_unk") else None
     y_unk = request.form.get("y_unk") if request.form.get("y_unk") else None
+    if y_unk == " ":
+        y_unk = ""
     square_unk = request.form.get("square_unk") if request.form.get("square_unk") else ""
 
     if request.method == 'POST':
