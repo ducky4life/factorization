@@ -34,9 +34,9 @@ def main_route():
         
     if amount > 999: # why do you need this many
         amount = 1000
-
+    
     x_unk = request.form.get("x_unk") if request.form.get("x_unk") else "x"
-    y_unk = request.form.get("y_unk") if request.form.get("y_unk") else "y"
+    y_unk = request.form.get("y_unk") #if request.form.get("y_unk") else "y"
     square_unk = request.form.get("square_unk") if request.form.get("square_unk") else ""
 
     if request.method == 'POST':
