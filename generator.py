@@ -397,8 +397,9 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
 
 # for (randomly) choosing one of the generator functions
-def process_input(polynomial_type: str, shuffle: str, **args):
+def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **args):
     result = []
+    default_y_unk_constant = ["perf_sq_2"]
 
     if polynomial_type == "mixed_all":
         polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf", "higher_deg_cf"])
@@ -414,35 +415,43 @@ def process_input(polynomial_type: str, shuffle: str, **args):
         polynomial_type = random.choice(["2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq"])
         if polynomial_type == "perf_sq":
             polynomial_type = random.choice(["perf_sq_1", "perf_sq_2"])
-        
 
+    if x_unk == None:
+        x_unk = "x"
+
+    if y_unk == None:
+        if polynomial_type in default_y_unk_constant:
+            y_unk = ""
+        else:
+            y_unk = "y"
+        
     match polynomial_type:
         case "0_sq":
-            result = expanded_no_square_terms(**args)
+            result = expanded_no_square_terms(x_unk=x_unk, y_unk=y_unk, **args)
             
         case "2_sq_same":
-            result = expanded_two_square_terms_same(**args)
+            result = expanded_two_square_terms_same(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "2_sq_diff":
-            result = expanded_two_square_terms_diff(**args)
+            result = expanded_two_square_terms_diff(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "3_sq":
-            result = expanded_three_square_terms(**args)
+            result = expanded_three_square_terms(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "perf_sq_1":
-            result = expanded_perfect_square(**args)
+            result = expanded_perfect_square(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "perf_sq_2":
-            result = linear_perfect_square(**args)
+            result = linear_perfect_square(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "diff_sq":
-            result = linear_difference_of_squares(**args)
+            result = linear_difference_of_squares(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "deg_1_cf_flip":
-            result = linear_degree_one_common_factor(True, **args)
+            result = linear_degree_one_common_factor(True, x_unk=x_unk, y_unk=y_unk, **args)
 
         case "deg_1_cf_noflip":
-            result = linear_degree_one_common_factor(False, **args)
+            result = linear_degree_one_common_factor(False, x_unk=x_unk, y_unk=y_unk, **args)
 
         case "higher_deg_cf_flip":
             result = higher_degree_common_factor(True, **args)
