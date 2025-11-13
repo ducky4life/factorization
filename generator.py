@@ -400,6 +400,7 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **args):
     result = []
     default_y_unk_constant = ["perf_sq_2"]
+    cannot_have_constant_y_unk = ["2_sq_diff", "2_sq_same"]
 
     if polynomial_type == "mixed_all":
         polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf", "higher_deg_cf"])
@@ -424,6 +425,9 @@ def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **
             y_unk = ""
         else:
             y_unk = "y"
+
+    if y_unk == "" and polynomial_type in cannot_have_constant_y_unk:
+        y_unk = "y"
         
     match polynomial_type:
         case "0_sq":
