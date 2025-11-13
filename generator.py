@@ -397,7 +397,7 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
 
 # for (randomly) choosing one of the generator functions
-def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **args):
+def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, num_unk: str, **args):
     result = []
     default_y_unk_constant = ["perf_sq_2"]
     cannot_have_constant_y_unk = ["2_sq_diff", "2_sq_same"]
@@ -440,7 +440,10 @@ def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, **
             result = expanded_two_square_terms_diff(x_unk=x_unk, y_unk=y_unk, **args)
 
         case "3_sq":
-            result = expanded_three_square_terms(x_unk=x_unk, y_unk=y_unk, **args)
+            if num_unk == "" and y_unk == "":
+                y_unk = "y"
+                
+            result = expanded_three_square_terms(x_unk=x_unk, y_unk=y_unk, num_unk=num_unk, **args)
 
         case "perf_sq_1":
             result = expanded_perfect_square(x_unk=x_unk, y_unk=y_unk, **args)
