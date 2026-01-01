@@ -431,6 +431,13 @@ def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, nu
         if polynomial_type == "perf_sq":
             polynomial_type = random.choice(["perf_sq_1", "perf_sq_2"])
 
+    elif polynomial_type == "mixed_no_identities":
+        polynomial_type = random.choice(["0_sq", "deg_1_cf", "higher_deg_cf"])
+        if polynomial_type == "deg_1_cf":
+            polynomial_type = random.choice(["deg_1_cf_flip", "deg_1_cf_noflip"])
+        elif polynomial_type == "higher_deg_cf":
+            polynomial_type = random.choice(["higher_deg_cf_flip", "higher_deg_cf_noflip"])
+
     if x_unk == None:
         x_unk = "x"
 
