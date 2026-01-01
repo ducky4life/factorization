@@ -3,8 +3,11 @@ import math
 
 # helper functions
 
-superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
 latex_mode =  False
+superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
+
+if latex_mode:
+    superscript_list = ["^0", "^1", "^2", "^3", "^4", "^5", "^6", "^7", "^8", "^9"]
 
 def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
@@ -101,7 +104,7 @@ def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_si
             if higher_degree:
                 item = item + superscript(item_power)
             else:
-                item = item + "²"
+                item = item + superscript(2)
         elif item != "1":
             item = item + added_term
         else:
