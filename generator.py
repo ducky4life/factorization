@@ -4,6 +4,7 @@ import math
 # helper functions
 
 superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
+latex_mode =  False
 
 def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
@@ -15,8 +16,14 @@ def random_coeff(min_incl: int = -9, max_incl: int = 9):
     return number
 
 def superscript(num: int = 2):
+    global latex_mode
     local_superscript_list = superscript_list
-    return(local_superscript_list[num] if num<10 else local_superscript_list[2])
+    if num < 10 and not latex_mode:
+        return(local_superscript_list[num])
+    elif not latex_mode:
+        return(local_superscript_list[2])
+    else:
+        return(f"^{num}")
 
 def parity_shift(unk):
     unk = unk + 1 if unk != -1 else -2
@@ -121,12 +128,16 @@ def shuffle_list(input_list: list):
 
 def list_to_string(input_list: list, trim: bool = True):
     output_str = ""
+    global latex_mode
 
     for item in input_list:
         output_str = output_str + str(item)
 
     if trim:
         output_str = output_str.removeprefix("+")
+
+    if latex_mode:
+        output_str = "$" + output_str + "$"
     
     return output_str
 
@@ -397,10 +408,13 @@ def expanded_three_square_terms(x_unk: str = "x", y_unk: str = "y", num_unk: str
 
 
 # for (randomly) choosing one of the generator functions
-def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, num_unk: str, **args):
+def process_input(polynomial_type: str, shuffle: str, x_unk: str, y_unk: str, num_unk: str, latex: bool, **args):
     result = []
     default_y_unk_constant = ["perf_sq_2"]
     cannot_have_constant_y_unk = ["2_sq_diff", "2_sq_same"]
+
+    global latex_mode
+    latex_mode = latex
 
     if polynomial_type == "mixed_all":
         polynomial_type = random.choice(["0_sq", "2_sq_same", "2_sq_diff", "3_sq", "perf_sq", "diff_sq", "deg_1_cf", "higher_deg_cf"])
