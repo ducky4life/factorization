@@ -6,9 +6,6 @@ import math
 latex_mode =  False
 superscript_list = ["⁰","¹","²","³","⁴","⁵","⁶","⁷","⁸","⁹"]
 
-if latex_mode:
-    superscript_list = ["^0", "^1", "^2", "^3", "^4", "^5", "^6", "^7", "^8", "^9"]
-
 def random_coeff_pos(max_incl: int = 9):
     return random.randint(1, max_incl)
 
@@ -87,6 +84,11 @@ def flip_linear_term(term: str):
 
 def multiply_term_to_polynomial(term: str, polynomial_list: list, random_flip_sign: bool = False, higher_degree: bool = False):
     local_superscript_list = superscript_list
+    
+    global latex_mode
+    if latex_mode:
+        local_superscript_list = ["^0", "^1", "^2", "^3", "^4", "^5", "^6", "^7", "^8", "^9"]
+    
     linear_term = term[0:term.index(")")+1]
     added_term = term
     new_list = []
