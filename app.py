@@ -19,11 +19,14 @@ def main_route():
     error = ""
     output_as_file = ""
     shuffle = ""
+    latex_mode = ""
 
     polynomial_type = request.form.get("polynomial_type")
     amount_str = request.form.get("amount") if request.form.get("amount") else 1
     shuffle = request.form.get("shuffle")
     output_as_file = request.form.get("output_as_file")
+    latex_mode = request.form.get("latex_mode")
+    latex_bool = True if latex_mode == "on" else False
 
     amount = 1
 
@@ -45,7 +48,7 @@ def main_route():
 
         try:
             for i in range(amount):
-                message.append(list_to_string(process_input(polynomial_type, shuffle, x_unk=x_unk, y_unk=y_unk, num_unk=square_unk), True))
+                message.append(list_to_string(process_input(polynomial_type, shuffle, x_unk=x_unk, y_unk=y_unk, num_unk=square_unk, latex=latex_bool), True))
         except Exception as e:
             error = f"Error: {e}"
 
