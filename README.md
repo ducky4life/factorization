@@ -85,7 +85,7 @@ curl -d 'polynomial_type=3_sq' -d 'amount=3' -d 'x_unk=a' -d 'y_unk= ' -d 'sq_un
 
 returns:
 
-> {"polynomial_1":"$16y^2-b^2-8ay+a^2$","polynomial_2":"$-36b^2-4ay+4y^2+a^2$","polynomial_3":"$-b^2+8ay+16a^2+y^2$"}
+> {"polynomial_1":"$-16+8a-a^2+64b^2$","polynomial_2":"$36b^2-30a-9-25a^2$","polynomial_3":"$a^2+2a+1-49b^2$"}
 
 ### exporting to file
 
