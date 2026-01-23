@@ -37,6 +37,31 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    python generator.py
    ```
 
+## to do list
+
+- [ ] toggle including answers: make something to access the coefficients
+    - you can probably make an answer validator if you do this
+- [x] 0/1 square terms
+- [x] swapping signs function
+- [x] actually implement swapping signs
+- [ ] perfect square (linear): force common factor
+- [ ] insanity mode for max coefficients (maybe a global toggle for the random generator function instead of manually setting every limit)
+- [ ] api if i'm feeling really bored
+- [x] increase probability for squared terms for deg 1 c.f.
+- [ ] randomize common factor terms order
+- [x] flip for degree 2-4
+- make sure all terms in the polynomial don't share the same constant common factor lol (check for negative coefficients)
+   - [x] 3 sq
+   - [x] 2 sq diff
+   - [x] 2 sq same
+   - [x] no sq
+   - [x] diff of sq
+   - [x] perf sq (common factor intentionally included)
+   - [ ] deg 1 c.f. flip
+   - [ ] deg 1 c.f. no flip
+   - [x] higher deg c.f. flip (intentional)
+   - [x] higher deg c.f. noflip (intentional)
+
 ## api usage
 
 api endpoint: `https://factorization-generator.vercel.app/api`
@@ -104,31 +129,6 @@ curl -d 'polynomial_type=mixed_all&prettify=True&amount=3' https://factorization
   "polynomial_3": "$16x^2+4x-5y-25y^2$"
 }
 ```
-
-## to do list
-
-- [ ] toggle including answers: make something to access the coefficients
-    - you can probably make an answer validator if you do this
-- [x] 0/1 square terms
-- [x] swapping signs function
-- [x] actually implement swapping signs
-- [ ] perfect square (linear): force common factor
-- [ ] insanity mode for max coefficients (maybe a global toggle for the random generator function instead of manually setting every limit)
-- [ ] api if i'm feeling really bored
-- [x] increase probability for squared terms for deg 1 c.f.
-- [ ] randomize common factor terms order
-- [x] flip for degree 2-4
-- make sure all terms in the polynomial don't share the same constant common factor lol (check for negative coefficients)
-   - [x] 3 sq
-   - [x] 2 sq diff
-   - [x] 2 sq same
-   - [x] no sq
-   - [x] diff of sq
-   - [x] perf sq (common factor intentionally included)
-   - [ ] deg 1 c.f. flip
-   - [ ] deg 1 c.f. no flip
-   - [x] higher deg c.f. flip (intentional)
-   - [x] higher deg c.f. noflip (intentional)
 
 ## local site usage
 
