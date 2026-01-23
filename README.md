@@ -67,7 +67,7 @@ randomized options: mixed_all, mixed_identities_only, mixed_no_identities
 
 `shuffle_terms` - whether to shuffle the different terms in the polynomial. defaults to false.
 
-### api examples
+## api examples
 
 you can use this command to show a help message:
 
@@ -77,7 +77,7 @@ curl -d 'help' https://factorization-generator.vercel.app/api
 
 or just `curl https://factorization-generator.vercel.app/api`
 
-#### example query with all arguments:
+### example query with all arguments:
 
 ```sh
 curl -d 'polynomial_type=3_sq' -d 'amount=3' -d 'x_unk=a' -d 'y_unk= ' -d 'sq_unk=b' -d 'shuffle_terms=true' -d 'prettify=false' https://factorization-generator.vercel.app/api
@@ -87,7 +87,7 @@ returns:
 
 > {"polynomial_1":"$-16+8a-a^2+64b^2$","polynomial_2":"$36b^2-30a-9-25a^2$","polynomial_3":"$a^2+2a+1-49b^2$"}
 
-#### exporting to file
+### exporting to file
 
 use the redirection operator `>>`
 
