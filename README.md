@@ -37,6 +37,74 @@ make sure you have [python](https://www.python.org/downloads/) installed.
    python generator.py
    ```
 
+# api usage
+
+api endpoint: `https://factorization-generator.vercel.app/api`
+
+by default, the api is started from app.py. you can host the api as standalone app by adding the stuff in app.py before and after `main_route()` to api.py
+
+only polynomial_type is a required argument. the rest is optional and can be excluded. arguments can also be combined as shown [here](https://github.com/ducky4life/factorization?tab=readme-ov-file#exporting-to-file).
+
+note that LaTeX mode is the only output form.
+
+## arguments
+
+`polynomial_type` (required) - type of polynomial to be generated.
+
+available options: 0_sq, 2_sq_same, 2_sq_diff, 3_sq,
+   perf_sq_1 (expanded), perf_sq_2, diff_sq,
+   deg_1_cf_flip, deg_1_cf_noflip, higher_deg_cf_flip, higher_deg_cf_noflip
+
+randomized options: mixed_all, mixed_identities_only, mixed_no_identities
+
+`amount` - the amount of polynomials to be generated. defaults to 1.
+
+`x_unk` - the name for the 'x' unknown.
+
+`y_unk` - the name for the 'y' unknown. you can enter a space character for constants (no unknown).
+
+`sq_unk` - the name for the extra square term unknown. only used for 3 square terms.
+
+`shuffle_terms` - whether to shuffle the different terms in the polynomial. defaults to false.
+
+## api examples
+
+you can use this command to show a help message:
+
+```sh
+curl -d 'help' https://factorization-generator.vercel.app/api
+```
+
+or just `curl https://factorization-generator.vercel.app/api`
+
+### example query with all arguments:
+
+```sh
+curl -d 'polynomial_type=3_sq' -d 'amount=3' -d 'x_unk=a' -d 'y_unk= ' -d 'sq_unk=b' -d 'shuffle_terms=true' -d 'prettify=false' https://factorization-generator.vercel.app/api
+```
+
+returns:
+
+> {"polynomial_1":"$16y^2-b^2-8ay+a^2$","polynomial_2":"$-36b^2-4ay+4y^2+a^2$","polynomial_3":"$-b^2+8ay+16a^2+y^2$"}
+
+### exporting to file
+
+use the redirection operator `>>`
+
+example:
+
+```sh
+curl -d 'polynomial_type=mixed_all&prettify=True&amount=3' https://factorization_generator.vercel.app/api >> output.json
+```
+
+```json
+{
+  "polynomial_1": "$25x^2+60xy+36y^2-4$",
+  "polynomial_2": "$-4(5x+y)(3y-x)+8(-x+5y)(3y-x)$",
+  "polynomial_3": "$16x^2+4x-5y-25y^2$"
+}
+```
+
 ## to do list
 
 - [ ] toggle including answers: make something to access the coefficients

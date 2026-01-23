@@ -3,10 +3,13 @@ from threading import Thread
 from waitress import serve
 import requests
 import time
+from flask_restful import Api
+from api import FactorizationApi
 from generator import *
 
 app = Flask('')
 port = 8080
+api_app = Api(app)
 app.json.compact = False
 
 def request_url_to_list(url):
@@ -61,6 +64,8 @@ def main_route():
             return response
             
     return render_template("index.html", message=message, error=error)
+
+api_app.add_resource(FactorizationApi, '/api')
 
 def run():
     serve(app, host="0.0.0.0", port=port)
