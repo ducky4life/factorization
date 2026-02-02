@@ -279,6 +279,7 @@ input:checked + .slider:before {
   margin: 0;
   text-align: left;
   flex: 1;
+  padding-top: 0;
 }
 
 .toggles label {
