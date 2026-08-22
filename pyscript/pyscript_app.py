@@ -1,5 +1,5 @@
 import time
-from pyscript.generator_mpy import process_input, list_to_string
+from generator import process_input, list_to_string
 from pyscript import web, when
 
 # def request_url_to_list(url):
@@ -9,12 +9,11 @@ from pyscript import web, when
 def get_output():
     message = []
     error = ""
-    shuffle = ""
     latex_mode = ""
 
     polynomial_type = web.page["polynomial_type"].value
     amount_str = web.page["amount"].value if web.page["amount"].value else 1
-    shuffle = web.page["shuffle"].checked
+    shuffle = "on" if web.page["shuffle"].checked else ""
     latex_mode = web.page["latex_mode"].checked
 
     latex_bool = True if latex_mode else False

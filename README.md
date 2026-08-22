@@ -8,6 +8,14 @@ and also i can make an api out of this if i wanted to in the future (not that an
 
 link: https://factorization-generator.vercel.app/
 
+## client-side site
+
+using pyscript, a client-side (no refreshes every request!) webpage is available at https://ducky.is-a.dev/factorization
+
+however, note that advanced operations (exporting to file, api using curl) are not usable in this version.
+
+the code of the pyscript site is available in the `pyscript` folder.
+
 ## factorization types supported
 
 - identities
