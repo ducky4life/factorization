@@ -2,6 +2,13 @@ import random
 import math
 from random import randrange
 
+def gcd(a: int, b: int):
+    a = abs(a)
+    b = abs(b)
+    while b != 0:
+        a, b = b, a % b
+    return a
+
 def shuffle(array):
     "Fisher–Yates shuffle"
     for i in range(len(array)-1, 0, -1):
@@ -245,7 +252,7 @@ def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
     x_coeff = random_coeff(2, 9)
     y_coeff = -random_coeff(2, 9)
 
-    while math.gcd(x_coeff, y_coeff) == 1:
+    while gcd(x_coeff, y_coeff) == 1:
         x_coeff = random_coeff(2, 9)
         y_coeff = -random_coeff(2, 9)
         
@@ -254,7 +261,7 @@ def linear_perfect_square(x_unk: str = "x", y_unk: str = "", **args):
 
     #original_linear_term = linear_generator(x_unk, y_unk, x_coeff=x_coeff, y_coeff=new_y_coeff)
     #print(original_linear_term)
-    common_factor_coeff = math.gcd(x_coeff, new_y_coeff)
+    common_factor_coeff = gcd(x_coeff, new_y_coeff)
     simplified_x_coeff = int(x_coeff/common_factor_coeff)
     simplified_y_coeff = int(new_y_coeff/common_factor_coeff)
 
