@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <body>
+  <head>
+    <title>Ducky</title>
+    
+    <link rel="stylesheet" href="https://pyscript.net/releases/2026.7.3/core.css" />
+    <script type="module" src="https://pyscript.net/releases/2026.7.3/core.js"></script>
+    <link rel="icon" type="image/x-icon" href="./static/favicon.ico">
+    <link rel="stylesheet" href="./static/style.css">
+  </head>
+  
+  <div class="navBar">
+    <nav>
+      <a href="https://ducky.is-a.dev/" class="navText">Ducky</a>
+    </nav>
+  </div>
+  
+    <section class="wrapper"><br>
+    <div class="bg-fixed" aria-hidden="true"></div>
+    <h2>factorization generator</h2>
+      <br>
+      <a class="codebadges" href="https://github.com/ducky4life/factorization"><img src="https://img.shields.io/badge/Source Code-181717?logo=github&logoColor=fff&style=for-the-badge" alt="GitHub Badge"></a>
+      <p style="padding-top: 10px;">all arguments are optional</p>
+      <p style="padding-top: 10px;">this looks better on my ipad i swear mobile layouts are so hard</p>
+      <br>
+      
+      <div>
+        
+       <div class="textboxes">
+         
+        <div style="padding-right: 10px;">
+          <p>amount</p><br>
+          <textarea id="amount" placeholder="1-1000"></textarea>
+        </div>
+
+        <div style="padding-left: 10px; padding-right: 10px;">
+          <p>x unknown id</p><br>
+          <textarea id="x_unk" placeholder="e.g. (2m-n)"></textarea>
+        </div>
+
+        <div style="padding-left: 10px; padding-right: 10px;">
+          <p>y unknown id</p><br>
+          <textarea id="y_unk" placeholder="e.g. (5m+3n)"></textarea>
+        </div>
+
+        <div style="padding-left: 10px;">
+          <p>square unknown id</p><br>
+          <textarea id="square_unk" placeholder="(if 3 sq. terms)"></textarea>
+        </div>
+      </div><br>
+
+
+      <div class="toggles">
+
+        <div class="toggles" style="padding-right: 50px;">
+          <p style="padding-right: 50px;">shuffle terms</p>
+          <label class="switch">
+            <input type="checkbox" id="shuffle">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggles" style="padding-left: 50px; padding-right: 50px;">
+          <p style="padding-right: 50px;">math LaTeX format</p>
+          <label class="switch">
+            <input type="checkbox" id="latex_mode">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+        <div class="toggles" style="padding-left: 50px;">
+          <p style="padding-right: 50px;">export as file</p>
+          <label class="switch">
+            <input type="checkbox" id="output_as_file">
+            <span class="slider round"></span>
+          </label>
+        </div>
+
+      </div><br>
+    
+        <p>type of polynomial</p><br>
+      <select id="polynomial_type" class="button button3">
+        <option value="3_sq">3 squares</option>
+        <option value="2_sq_diff">2 squares (diff sign)</option>
+        <option value="2_sq_same">2 squares (same sign)</option>
+        <option value="diff_sq">difference of squares</option>
+        <option value="perf_sq_1">perfect square</option>
+        <option value="perf_sq_2">deg 1 perf sq (forced c.f.)</option>
+        <option value="0_sq">no squares</option>
+        <option value="deg_1_cf_flip">degree 1 factor (flip sign)</option>
+        <option value="deg_1_cf_noflip">degree 1 factor (no flip)</option>
+        <option value="higher_deg_cf_flip">degree 2-4 factor (flip sign)</option>
+        <option value="higher_deg_cf_noflip">degree 2-4 factor (no flip)</option>
+        <option value="mixed_identities_only">random (identities)</option>
+        <option value="mixed_no_identities">random (no identities)</option>
+        <option value="mixed_all">random (all)</option>
+      </select>
+        
+        <button class="button button3" id="submit">submit</button>
+      </div>
+      <br>
+
+      <p id="error"></p>
+      <p id="output"></p>
+
+      <script type="mpy" config="./pyscript.json" src="./pyscript_app.py"></script>
+
+    </body>
+  </section>
+</html>
